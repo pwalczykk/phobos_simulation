@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff_bearing">
+
+
+<!-- GEOMETRY -->
+    <xacro:macro name="diff_bearing_geometry">
+        <geometry>
+            <sphere radius="${diff_bearing_radius}"/>
+        </geometry>
+    </xacro:macro>
+
+<!-- MATERIAL -->
+    <xacro:macro name="diff_bearing_material">
+        <material name="green3">
+            <color rgba=".5 .8 .5 1"/>
+        </material>
+    </xacro:macro>
+
+<!-- LINK -->
+    <xacro:macro name="diff_bearing" params="name parent x y z">
+        <link name="${name}">
+            <visual>
+                <xacro:diff_bearing_geometry/>
+                <xacro:diff_bearing_material/>
+            </visual>
+            <collision>
+                <xacro:diff_bearing_geometry/>
+            </collision>
+            <inertial>
+                <mass value=".3"/>
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.01"/>
+            </inertial>
+        </link>
+
+            <joint name="${name}_joint" type="revolute">
+                <parent link="${parent}"/>
+                <child link="${name}"/>
+                <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
+                <axis xyz="0 0 1"/>
+                <limit effort="100" velocity="1" lower="-.3" upper=".3"/>
+                <dynamics damping="1"/>
+            </joint>
+
+            <gazebo reference="${name}">
+                <mu1> .2 </mu1>
+                <mu2> .2 </mu2>
+                <material> Gazebo/Gray </material>
+                <selfCollide> true </selfCollide>
+            </gazebo>
+
+    </xacro:macro>
+
+</robot>

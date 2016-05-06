@@ -1,0 +1,14 @@
+<launch>
+    <node
+        name="gazebo_arm_controller"
+        pkg="rover_simulation"
+        type="gazebo_arm_controller"
+        output="screen"
+    />
+    <node
+        name="rcvr"
+        pkg="rover_model_connector"
+        type="rcvr.py"
+        output="screen"
+    />
+</launch>

@@ -1,0 +1,117 @@
+<launch>
+    <!--rosparam file="$(find rover_simulation)/yaml/rover_keyboard.yaml" command="load"/-->
+
+    <!--node
+        name="controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        respawn="false"
+        output="screen"
+        ns="rover"
+        args="link0_velocity_controller
+              link1_velocity_controller
+              link2_velocity_controller
+              link3_velocity_controller
+              link4_velocity_controller
+              finger1_velocity_controller
+              finger2_velocity_controller
+              tower_yaw_velocity_controller
+              tower_pitch_velocity_controller
+              wheel_fl_velocity_controller
+              wheel_fr_velocity_controller
+              wheel_ml_velocity_controller
+              wheel_mr_velocity_controller
+              wheel_bl_velocity_controller
+              wheel_br_velocity_controller
+              joint_state_controller"
+    /-->
+
+    <node
+        name="gazebo_wheel_controller"
+        pkg="rover_simulation"
+        type="gazebo_wheel_controller"
+        output="screen"
+    />
+
+    <include file="$(find rover_keyboard_teleop)/launch/keyboard_teleop.launch"/>
+
+    <!--node
+        name="link0_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0 /rover/link0_velocity_controller"
+    />
+
+    <node
+        name="link1_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0 /rover/link1_velocity_controller"
+    />
+
+    <node
+        name="link2_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0  /rover/link2_velocity_controller"
+    />
+
+    <node
+        name="link3_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0  /rover/link3_velocity_controller"
+    />
+
+    <node
+        name="link4_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0 /rover/link5_velocity_controller"
+    />
+
+    <node
+        name="finger1_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0  /rover/finger1_velocity_controller"
+    />
+
+    <node
+        name="finger2_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0  /rover/finger2_velocity_controller"
+    />
+
+    <node
+        name="tower_yaw_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0  /rover/tower_yaw_velocity_controller"
+    />
+
+    <node
+        name="tower_pitch_controller_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        output="screen"
+        args="0 0 0  /rover/tower_pitch_velocity_controller"
+    /-->
+
+    <!--node
+        name="differential_pid_server"
+        pkg="rover_simulation"
+        type="controller_server"
+        args="0.01 0.01 0.01 /rover/differential_pid"
+    /-->
+
+</launch>
