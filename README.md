@@ -2,11 +2,11 @@
 
 Simulation of rover with Gazebo 5.0 and ROS Jade
 
-    # rover_meshes
+# rover_meshes
 
     meshes, textures and .world files used to create simulation enviroment
 
-    # rover_simulation
+# rover_simulation
 
     simulation startup:
 
