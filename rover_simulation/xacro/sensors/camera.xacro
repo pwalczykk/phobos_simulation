@@ -145,7 +145,7 @@
             <selfCollide> false </selfCollide>
         </gazebo>
 
-        <xacro:camera_plugin name="${name}" width="320" height="240"/>
+        <xacro:camera_plugin name="${name}" width="1280" height="768"/>
 
     </xacro:macro>
 </robot>
