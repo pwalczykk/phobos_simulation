@@ -8,12 +8,16 @@
     <xacro:include filename="../sensors/camera.xacro"/>
 
 <!-- PROPERTIES -->
-    <xacro:property name="body_length" value=".720"/>
+    <!-- <xacro:property name="body_length" value=".720"/>
     <xacro:property name="body_width" value=".400"/>
-    <xacro:property name="body_height" value=".150"/>
+    <xacro:property name="body_height" value=".150"/> -->
 
-    <xacro:property name="body_translation_x" value="-.080"/>
-    <xacro:property name="body_translation_z" value="-.040"/>
+    <xacro:property name="body_length" value=".570"/>
+    <xacro:property name="body_width" value=".400"/>
+    <xacro:property name="body_height" value=".250"/>
+
+    <xacro:property name="body_translation_x" value="-.040"/>
+    <xacro:property name="body_translation_z" value="-.0325"/>
 
     <xacro:property name="tower_pose_x" value="${-body_length/2 - +0.05}"/>
     <xacro:property name="tower_pose_y" value=".160"/>
