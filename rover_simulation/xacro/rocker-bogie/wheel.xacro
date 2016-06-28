@@ -28,9 +28,9 @@
                 <xacro:wheel_geometry/>
             </collision>
             <inertial>
-                 <mass value="3"/>
+                 <mass value="1.67"/>
                  <origin xyz="0 0 0" rpy="0 0 0"/>
-                 <inertia ixx=".03" ixy="0.000" ixz="0.000" iyy=".03" iyz="0.000" izz=".03"/>
+                 <inertia ixx=".007228" ixy="0" ixz="0" iyy=".011596" iyz="0" izz=".007228"/>
             </inertial>
         </link>
 

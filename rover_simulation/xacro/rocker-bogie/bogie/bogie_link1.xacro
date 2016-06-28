@@ -43,8 +43,8 @@
 
             <inertial>
                  <origin rpy="0 0 0" xyz="${bogie_link1_offset_x} ${bogie_link1_offset_y*side} ${bogie_link1_offset_z}" />
-                 <mass value="2"/>
-                 <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
+                 <mass value="0"/>
+                 <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
             </inertial>
         </link>
         <gazebo reference="${name}">
