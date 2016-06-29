@@ -33,18 +33,17 @@
 
 
 <!-- BODY -->
-    <!--xacro:main_body name="main_body" parent="rocker_l_bearing" x="${body_translation_x}" z="${wheel_base_m/2}" y="${body_translation_z}"/-->
     <xacro:main_body name="main_body" parent="suspension_beam" x="${body_translation_x}" y="0" z="${body_translation_z}"/>
 
 <!--TOWER -->
-    <xacro:tower_yaw name="tower_yaw" parent="main_body" x="${tower_pose_x}" y="${tower_pose_y}" z="${tower_pose_z}"/>
-    <xacro:tower_pitch name="tower_pitch" parent="tower_yaw" x="0" y="0" z="${tower_yaw_height/2}"/>
+    <!-- <xacro:tower_yaw name="tower_yaw" parent="main_body" x="${tower_pose_x}" y="${tower_pose_y}" z="${tower_pose_z}"/>
+    <xacro:tower_pitch name="tower_pitch" parent="tower_yaw" x="0" y="0" z="${tower_yaw_height/2}"/> -->
 
 <!-- SENSORS -->
     <xacro:camera_link name="camera1" parent="main_body" x="${body_length/2 + camera_x/2 + body_translation_x}" y=".100" z="-.070" pitch="0"/>
     <xacro:camera_link name="camera2" parent="main_body" x="${body_length/2 + camera_x/2 + body_translation_x}" y="-.100" z="-.070" pitch="0"/>
-    <xacro:camera_link name="camera3" parent="tower_pitch" x="${tower_pitch_length/2 + camera_x/2}" y="0" z="0" pitch="0"/>
-    <xacro:camera_link name="camera5" parent="main_body" x="0" y="0" z="${-body_height/2 - camera_x/2 + body_translation_z}" pitch="1.57075"/>
+    <!-- <xacro:camera_link name="camera3" parent="tower_pitch" x="${tower_pitch_length/2 + camera_x/2}" y="0" z="0" pitch="0"/> -->
+    <!-- <xacro:camera_link name="camera5" parent="main_body" x="0" y="0" z="${-body_height/2 - camera_x/2 + body_translation_z}" pitch="1.57075"/> -->
 
 
 </robot>

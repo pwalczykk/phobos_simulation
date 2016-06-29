@@ -70,14 +70,14 @@
     <xacro:bogie name="bogie_r" parent="rocker_r_bearing" x="${bogie_x}" y="${bogie_y}"  z="${bogie_z}" side="-1"/>
 
 <!-- WHEELS -->
-    <xacro:wheel name="fl" parent="rocker_l_bearing" x="${wheel_f_x}" y="${+wheel_f_y}"  z="${wheel_f_z}" u="1"/>
-    <xacro:wheel name="fr" parent="rocker_r_bearing" x="${wheel_f_x}" y="${-wheel_f_y}"  z="${wheel_f_z}" u="1"/>
+    <xacro:wheel name="fl" parent="rocker_l_bearing" x="${wheel_f_x}" y="${+wheel_f_y}"  z="${wheel_f_z}" side="1"/>
+    <xacro:wheel name="fr" parent="rocker_r_bearing" x="${wheel_f_x}" y="${-wheel_f_y}"  z="${wheel_f_z}" side="-1"/>
 
-    <xacro:wheel name="ml" parent="bogie_l_bearing"  x="${wheel_m_x}" y="${+wheel_m_y}"  z="${wheel_m_z}" u=".7"/>
-    <xacro:wheel name="mr" parent="bogie_r_bearing"  x="${wheel_m_x}" y="${-wheel_m_y}"  z="${wheel_m_z}" u=".7"/>
+    <xacro:wheel name="ml" parent="bogie_l_bearing"  x="${wheel_m_x}" y="${+wheel_m_y}"  z="${wheel_m_z}" side="1"/>
+    <xacro:wheel name="mr" parent="bogie_r_bearing"  x="${wheel_m_x}" y="${-wheel_m_y}"  z="${wheel_m_z}" side="-1"/>
 
-    <xacro:wheel name="bl" parent="bogie_l_bearing"  x="${wheel_b_x}" y="${+wheel_b_y}"  z="${wheel_b_z}" u="1"/>
-    <xacro:wheel name="br" parent="bogie_r_bearing"  x="${wheel_b_x}" y="${-wheel_b_y}"  z="${wheel_b_z}" u="1"/>
+    <xacro:wheel name="bl" parent="bogie_l_bearing"  x="${wheel_b_x}" y="${+wheel_b_y}"  z="${wheel_b_z}" side="1"/>
+    <xacro:wheel name="br" parent="bogie_r_bearing"  x="${wheel_b_x}" y="${-wheel_b_y}"  z="${wheel_b_z}" side="-1"/>
 
 <!-- MY DIFFERENTIAL PLUGIN -->
     <gazebo>
@@ -85,9 +85,9 @@
             <leftJoint>rocker_l_bearing_joint</leftJoint>
             <rightJoint>rocker_r_bearing_joint</rightJoint>
             <topic>/rover/differential_pid</topic>
-            <Kp>3000</Kp>
+            <Kp>1000</Kp>
             <Ki>0</Ki>
-            <Kd>10000</Kd>
+            <Kd>3000</Kd>
             <limit>10000</limit>
         </plugin>
     </gazebo>

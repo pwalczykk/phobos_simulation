@@ -17,7 +17,7 @@
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="wheel" params="name parent x y z u">
+    <xacro:macro name="wheel" params="name parent x y z side">
 
         <link name="wheel_${name}">
             <visual>
@@ -37,18 +37,20 @@
         <joint name="wheel_${name}_joint" type="continuous">
             <parent link="${parent}"/>
             <child link="wheel_${name}"/>
-            <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
+            <origin rpy="${-side*0.02} 0 0" xyz="${x} ${y} ${z}"/>
             <axis xyz="0 1 0"/>
             <limit effort="100" velocity="10"/>
             <dynamics damping="1"/>
         </joint>
 
         <gazebo reference="wheel_${name}">
-            <mu1> ${u} </mu1>
-            <mu2> ${u} </mu2>
-            <!--fdir1> 0 1 0 </fdir1-->
-            <material> Gazebo/Black </material>
-            <selfCollide> True </selfCollide>
+            <mu1 value="0.5"/>
+            <mu2 value="0.5"/>
+            <!-- <kp  value="10000000.0" /> -->
+            <!-- <kd  value="1.0" /> -->
+            <!-- <fdir1 value="0 1 0"/> -->
+            <material value="Gazebo/Black"/>
+            <selfCollide value="True"/>
         </gazebo>
 
         <gazebo>
@@ -63,9 +65,9 @@
             <plugin name="wheel_${name}_controller" filename="libControllerPID.so">
                 <joint>wheel_${name}_joint</joint>
                 <topic>/rover/wheel_${name}_velocity_controller</topic>
-                <Kp>5</Kp>
-                <Ki>0.5</Ki>
-                <Kd>0.4</Kd>
+                <Kp>2</Kp>
+                <Ki>0.1</Ki>
+                <Kd>0.1</Kd>
                 <limit>100</limit>
             </plugin>
         </gazebo>

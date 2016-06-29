@@ -12,8 +12,8 @@ class BaseWheelController{
     std_msgs::Float64 left_wheels_speed;
     std_msgs::Float64 right_wheels_speed;
 
-    std_msgs::Float64 left_wheels_speed_08;
-    std_msgs::Float64 right_wheels_speed_08;
+    std_msgs::Float64 left_wheels_speed_reduced;
+    std_msgs::Float64 right_wheels_speed_reduced;
 
     std_msgs::Float64 wheel_stop;
     std_msgs::Float64 wheel_free;

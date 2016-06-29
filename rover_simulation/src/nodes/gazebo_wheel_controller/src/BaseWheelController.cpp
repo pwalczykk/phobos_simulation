@@ -22,28 +22,28 @@ void BaseWheelController::SubCmdVel(const geometry_msgs::Twist cmd_vel)
 {
     ROS_WARN("%f, %f", cmd_vel.linear.x, cmd_vel.angular.z);
     left_wheels_speed.data = cmd_vel.linear.x + cmd_vel.angular.z;
-    left_wheels_speed_08.data = left_wheels_speed.data*0.8;
+    left_wheels_speed_reduced.data = left_wheels_speed.data*0.5;
 
     right_wheels_speed.data = cmd_vel.linear.x - cmd_vel.angular.z;
-    right_wheels_speed_08.data = right_wheels_speed.data*0.8;
+    right_wheels_speed_reduced.data = right_wheels_speed.data*0.5;
 
 // TODO Zastąpić rozmytym kontrolerem
     if(cmd_vel.angular.z < -0.1)
     {
         pub_wheel[0].publish(left_wheels_speed);
-        pub_wheel[2].publish(left_wheels_speed_08);
+        pub_wheel[2].publish(left_wheels_speed_reduced);
         pub_wheel[4].publish(left_wheels_speed);
 
         pub_wheel[1].publish(right_wheels_speed);
         pub_wheel[3].publish(right_wheels_speed);
-        pub_wheel[5].publish(right_wheels_speed_08);
+        pub_wheel[5].publish(right_wheels_speed_reduced);
     }else if(cmd_vel.angular.z > 0.1){
         pub_wheel[0].publish(left_wheels_speed);
         pub_wheel[2].publish(left_wheels_speed);
-        pub_wheel[4].publish(left_wheels_speed_08);
+        pub_wheel[4].publish(left_wheels_speed_reduced);
 
         pub_wheel[1].publish(right_wheels_speed);
-        pub_wheel[3].publish(right_wheels_speed_08);
+        pub_wheel[3].publish(right_wheels_speed_reduced);
         pub_wheel[5].publish(right_wheels_speed);
     }else{
         pub_wheel[0].publish(left_wheels_speed);
