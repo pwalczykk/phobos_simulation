@@ -29,12 +29,12 @@
             <inertial>
                 <mass value="3"/>
                 <xacro:if value="${side == 1}"> <!-- LEFT-->
-                    <origin xyz="0 0 0" rpy="0 0 0"/>
-                    <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                    <origin xyz="0.247725 0.035298 -0.066751" rpy="0 0 0"/>
+                    <inertia ixx="0.050813" ixy="0.009439" ixz="-0.021963" iyy="0.135830" iyz="0.004023" izz="0.097893"/>
                 </xacro:if>
                 <xacro:if value="${side == -1}"> <!-- RIGHT-->
-                    <origin xyz="0 0 0" rpy="0 0 0"/>
-                    <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                    <origin xyz="0.247727 -0.035298 -0.066751" rpy="0 0 0"/>
+                    <inertia ixx="0.050813" ixy="-0.009439" ixz="-0.021960" iyy="0.135831" iyz="-0.004023" izz="0.097894"/>
                 </xacro:if>
             </inertial>
         </link>

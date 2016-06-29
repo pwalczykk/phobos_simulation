@@ -27,14 +27,14 @@
                 <xacro:bogie_bearing_geometry/>
             </collision>
             <inertial>
-                <mass value="3"/>
+                <mass value="6.143721"/>
                 <xacro:if value="${side == 1}"> <!-- LEFT-->
-                    <origin xyz="0 0 0" rpy="0 0 0"/>
-                    <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                    <origin xyz="-0.000010 0.045682 0.012347" rpy="0 0 0"/>
+                    <inertia ixx="0.082737" ixy="0.015401" ixz="-0.000002" iyy="0.236740" iyz="0.013790" izz="0.176983"/>
                 </xacro:if>
                 <xacro:if value="${side == -1}"> <!-- RIGHT-->
-                    <origin xyz="0 0 0" rpy="0 0 0"/>
-                    <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                    <origin xyz="-0.000007 -0.045682 0.012347" rpy="0 0 0"/>
+                    <inertia ixx="0.082737" ixy="-0.015402" ixz="0.000003" iyy="0.236740" iyz="-0.013790" izz="0.176983"/>
                 </xacro:if>
             </inertial>
         </link>

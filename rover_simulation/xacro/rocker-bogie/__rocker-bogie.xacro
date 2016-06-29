@@ -7,9 +7,6 @@
     <xacro:include filename="suspension_beam.xacro"/>
     <xacro:include filename="wheel.xacro"/>
 
-    <!-- TODO NO SUPPORT FOR CLOSED CHAINSD UNTIL URDF 2.0 TODO -->
-    <!--xacro:include filename="rocker-bogie/differential.xacro"/-->
-
 <!-- PROPERIES -->
     <!-- SUSPENSION PROPERTIES-->
     <xacro:property name="suspension_width" value=".580"/>
@@ -30,19 +27,13 @@
     <xacro:property name="wheel_b_y" value="0"/>
     <xacro:property name="wheel_b_z" value="-.205"/>
 
-
     <!-- WHEELS POSITIONS -->
     <xacro:property name="wheel_base_f" value=".550"/>
     <xacro:property name="wheel_base_m" value=".600"/>
     <xacro:property name="wheel_base_b" value=".500"/>
 
-    <!--xacro:property name="h_bogie" value=".100"/-->
-    <!--xacro:property name="l_bogie" value=".305"/-->
-
     <xacro:property name="h_wheel" value=".250"/>
     <xacro:property name="l_wheel_f" value=".305"/>
-    <!--xacro:property name="l_wheel_m" value=".160"/>
-    <xacro:property name="l_wheel_b" value=".160"/-->
 
     <!-- CUSTOM SIM PROPS -->
     <xacro:property name="h_bogie" value=".170"/>
@@ -54,7 +45,7 @@
     <xacro:property name="suspension_beam_length" value=".600"/>
     <xacro:property name="suspension_beam_radius" value=".025"/>
 
-    <xacro:property name="rocker_bearing_length" value=".050"/>
+    <xacro:property name="rocker_bearing_length" value=".100"/>
     <xacro:property name="rocker_bearing_radius" value=".035"/>
 
     <xacro:property name="bogie_bearing_length" value=".100"/>
@@ -75,14 +66,10 @@
     <xacro:rocker name="rocker_l" parent="suspension_beam" x="0" y="${suspension_width/2}"    z="0" side="1"/>  <!-- 1 = left -->
     <xacro:rocker name="rocker_r" parent="suspension_beam" x="0" y="${-suspension_width/2}"    z="0" side="-1"/> <!-- -1 = right -->
 
-    <!-- <xacro:bogie name="bogie_l" parent="rocker_l_bearing" x="${-l_bogie}" y="0"  z="${-h_bogie}" side="1"/>
-    <xacro:bogie name="bogie_r" parent="rocker_r_bearing" x="${-l_bogie}" y="0"  z="${-h_bogie}" side="-1"/> -->
-
     <xacro:bogie name="bogie_l" parent="rocker_l_bearing" x="${bogie_x}" y="${bogie_y}"  z="${bogie_z}" side="1"/>
     <xacro:bogie name="bogie_r" parent="rocker_r_bearing" x="${bogie_x}" y="${bogie_y}"  z="${bogie_z}" side="-1"/>
 
 <!-- WHEELS -->
-
     <xacro:wheel name="fl" parent="rocker_l_bearing" x="${wheel_f_x}" y="${+wheel_f_y}"  z="${wheel_f_z}" u="1"/>
     <xacro:wheel name="fr" parent="rocker_r_bearing" x="${wheel_f_x}" y="${-wheel_f_y}"  z="${wheel_f_z}" u="1"/>
 
@@ -93,13 +80,6 @@
     <xacro:wheel name="br" parent="bogie_r_bearing"  x="${wheel_b_x}" y="${-wheel_b_y}"  z="${wheel_b_z}" u="1"/>
 
 <!-- MY DIFFERENTIAL PLUGIN -->
-    <!--gazebo>
-        <plugin name="differential" filename="libDifferential.so">
-            <leftJoint>rocker_l_bearing_joint</leftJoint>
-            <rightJoint>rocker_r_bearing_joint</rightJoint>
-        </plugin>
-    </gazebo-->
-
     <gazebo>
         <plugin name="differential_pid" filename="libDifferentialPID.so">
             <leftJoint>rocker_l_bearing_joint</leftJoint>
