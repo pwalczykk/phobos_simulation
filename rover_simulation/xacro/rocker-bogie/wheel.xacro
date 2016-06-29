@@ -46,8 +46,8 @@
         <gazebo reference="wheel_${name}">
             <mu1 value="0.5"/>
             <mu2 value="0.5"/>
-            <!-- <kp  value="10000000.0" /> -->
-            <!-- <kd  value="1.0" /> -->
+            <!-- <kp  value="10000.0" /> -->
+            <!-- <kd  value="10000.0" /> -->
             <!-- <fdir1 value="0 1 0"/> -->
             <material value="Gazebo/Black"/>
             <selfCollide value="True"/>
