@@ -32,7 +32,7 @@
 <!-- LINKS -->
     <xacro:macro name="bogie" params="name parent x y z side">
 
-        <xacro:bogie_bearing name="${name}_bearing" parent="${parent}" x="${x}" y="${y}" z="${z}"/>
+        <xacro:bogie_bearing name="${name}_bearing" parent="${parent}" x="${x}" y="${y}" z="${z}" side="${side}"/>
 
         <xacro:bogie_link1 name="${name}_link1" parent="${name}_bearing"
             x="${bogie_link1_x}" y="${-bogie_link1_y}"  z="${bogie_link1_z}"

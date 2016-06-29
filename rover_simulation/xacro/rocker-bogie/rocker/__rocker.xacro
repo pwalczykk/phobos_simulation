@@ -47,9 +47,9 @@
 
 <!-- LINKS -->
 
-    <xacro:macro name="rocker" params="name parent x y z">
+    <xacro:macro name="rocker" params="name parent x y z side">    
 
-        <xacro:rocker_bearing name="${name}_bearing" parent="${parent}" x="${x}" y="${y}" z="${z}"/>
+        <xacro:rocker_bearing name="${name}_bearing" parent="${parent}" x="${x}" y="${y}" z="${z}" side="${side}"/>
 
         <xacro:rocker_link1 name="${name}_link1" parent="${name}_bearing"
             x="${rocker_link1_x}" y="${-rocker_link1_y}"  z="${rocker_link1_z}"
@@ -62,9 +62,6 @@
         <xacro:rocker_link3 name="${name}_link3" parent="${name}_link1"
             x="${rocker_link3_x}" y="${-rocker_link3_y}"  z="${rocker_link3_z}"
             pitch="${-rocker_link3_pitch}"/>
-
-        <!--xacro:link_diff name="${name}_link_diff" parent="${name}_bearing"  x="0" y="0" z="0"/-->
-
 
     </xacro:macro>
 </robot>

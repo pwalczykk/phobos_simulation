@@ -17,7 +17,7 @@
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="bogie_bearing" params="name parent x y z">
+    <xacro:macro name="bogie_bearing" params="name parent x y z side">
         <link name="${name}">
             <visual>
                 <xacro:bogie_bearing_geometry/>
@@ -28,8 +28,14 @@
             </collision>
             <inertial>
                 <mass value="3"/>
-                <origin xyz="0 0 0" rpy="0 0 0"/>
-                <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                <xacro:if value="${side == 1}"> <!-- LEFT-->
+                    <origin xyz="0 0 0" rpy="0 0 0"/>
+                    <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                </xacro:if>
+                <xacro:if value="${side == -1}"> <!-- RIGHT-->
+                    <origin xyz="0 0 0" rpy="0 0 0"/>
+                    <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                </xacro:if>
             </inertial>
         </link>
 

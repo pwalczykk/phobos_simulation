@@ -13,7 +13,7 @@
     <xacro:include filename="../sensors/camera.xacro"/>
 
 <!-- PROPERTIES -->
-    <xacro:property name="manipulator_pose_x" value=".185"/>
+    <xacro:property name="manipulator_pose_x" value=".165"/>
     <xacro:property name="manipulator_pose_z" value=".125"/>
 
     <xacro:property name="link0_length1" value=".050"/>

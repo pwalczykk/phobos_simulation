@@ -72,8 +72,8 @@
     <xacro:suspension_beam name="suspension_beam"/>
 
 <!-- SUSPENSION -->
-    <xacro:rocker name="rocker_l" parent="suspension_beam" x="0" y="${suspension_width/2}"    z="0"/>
-    <xacro:rocker name="rocker_r" parent="suspension_beam" x="0" y="${-suspension_width/2}"    z="0"/>
+    <xacro:rocker name="rocker_l" parent="suspension_beam" x="0" y="${suspension_width/2}"    z="0" side="1"/>  <!-- 1 = left -->
+    <xacro:rocker name="rocker_r" parent="suspension_beam" x="0" y="${-suspension_width/2}"    z="0" side="-1"/> <!-- -1 = right -->
 
     <!-- <xacro:bogie name="bogie_l" parent="rocker_l_bearing" x="${-l_bogie}" y="0"  z="${-h_bogie}" side="1"/>
     <xacro:bogie name="bogie_r" parent="rocker_r_bearing" x="${-l_bogie}" y="0"  z="${-h_bogie}" side="-1"/> -->
