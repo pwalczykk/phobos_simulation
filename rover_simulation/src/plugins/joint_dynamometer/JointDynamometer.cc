@@ -84,8 +84,6 @@ void JointDynamometer::Load_Publisher(std::string topic, ros::Publisher& pub)
 
 void JointDynamometer::Load_SimLoop()
 {
-    ROS_ERROR("5");
-
     this->updateConnection = event::Events::ConnectWorldUpdateBegin(
         boost::bind(&JointDynamometer::OnUpdate, this, _1));
     printf("SimLoop plugin launched succesfully\n");
@@ -93,8 +91,6 @@ void JointDynamometer::Load_SimLoop()
 
 void JointDynamometer::Load_NodeROS()
 {
-    ROS_ERROR("6");
-
     this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
 
     this->rosQueueThread =

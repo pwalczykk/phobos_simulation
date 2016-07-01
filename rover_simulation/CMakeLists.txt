@@ -35,6 +35,10 @@ add_executable(gazebo_joint_publisher
     src/nodes/gazebo_joint_publisher/Main.cpp)
 target_link_libraries(gazebo_joint_publisher ${catkin_LIBRARIES})
 
+add_executable(gazebo_joint_dynamometer_recorder
+    src/nodes/gazebo_joint_dynamometer_recorder/src/Main.cpp)
+target_link_libraries(gazebo_joint_dynamometer_recorder ${catkin_LIBRARIES})
+
 find_package(roscpp REQUIRED)
 find_package(std_msgs REQUIRED)
 include_directories(${roscpp_INCLUDE_DIRS})
