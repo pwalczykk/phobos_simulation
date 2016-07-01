@@ -92,5 +92,19 @@
         </plugin>
     </gazebo>
 
+ <!-- DYNAMOMETER PLUGINS -->
+    <gazebo>
+        <plugin name="rocker_l_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>rocker_l_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/rocker_l_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="rocker_r_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>rocker_r_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/rocker_r_bearing_joint</topic>
+        </plugin>
+    </gazebo>
 
 </robot>

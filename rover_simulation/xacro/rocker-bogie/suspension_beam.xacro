@@ -37,8 +37,8 @@
                 <xacro:suspension_beam_geometry/>
             </collision>
             <inertial>
-                <mass value="3"/>
-                <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.005"/>
+                <mass value="0.001"/>
+                <inertia ixx="0.000005" ixy="0" ixz="0" iyy="0.000005" iyz="0" izz="0.000005"/>
             </inertial>
         </link>
 

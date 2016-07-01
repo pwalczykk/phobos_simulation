@@ -23,6 +23,9 @@ namespace gazebo
         physics::JointPtr joint;
 
         ros::Publisher pub;
+        // ros::Subscriber sub;
+        int period;
+        int counter;
 
         geometry_msgs::Wrench msg;
         physics::JointWrench wrench;
@@ -30,14 +33,19 @@ namespace gazebo
     public:
         JointDynamometer();
 
-        void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
-        void Load_Publisher(std::string topic, ros::Publisher& pub);
-        void Load_SimLoop();
-        void Load_NodeROS();
-
         void OnUpdate(const common::UpdateInfo &info);
 
     private:
+        void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
+
+        void Load_Publisher(std::string topic, ros::Publisher& pub);
+        // void Load_Subscrieber(std::string topic,
+        //                       ros::Subscriber& sub,
+        //                       void (JointDynamometer::*function)(const std_msgs::Float64ConstPtr&));
+
+        void Load_SimLoop();
+        void Load_NodeROS();
+
         void QueueThread();
     };
     GZ_REGISTER_MODEL_PLUGIN(JointDynamometer)
