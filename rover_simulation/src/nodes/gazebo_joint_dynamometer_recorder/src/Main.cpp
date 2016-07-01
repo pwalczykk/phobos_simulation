@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv){
 
-    if(argc != 3){
+    if(argc != 3 && argc != 5){
         ROS_ERROR("Required arguments: FILE_NAME TOPIC_NAME");
         exit(-1);
     }
@@ -12,7 +12,9 @@ int main(int argc, char** argv){
 
     ros::init(argc, argv, "joint_dynamometer_recorder");
 
-    GazeboJointDynamometerRecorder recorder(argv[1], argv[2]);
+    ROS_WARN_STREAM(argv[argc-2] << " " << argv[argc-1]);
+
+    GazeboJointDynamometerRecorder recorder(argv[argc-2], argv[argc-1]);
 
     ros::spin();
 

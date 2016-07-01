@@ -1,0 +1,19 @@
+<launch>
+    <node
+        name="joint_dyn_rec_left"
+        pkg="rover_simulation"
+        type="gazebo_joint_dynamometer_recorder"
+        output="screen"
+        args="dynamometer_left.txt
+              /rover/joint_dynamometer/rocker_l_bearing_joint"
+    />
+
+    <node
+        name="joint_dyn_rec_right"
+        pkg="rover_simulation"
+        type="gazebo_joint_dynamometer_recorder"
+        output="screen"
+        args="dynamometer_right.txt
+              /rover/joint_dynamometer/rocker_r_bearing_joint"
+    />
+</launch>
