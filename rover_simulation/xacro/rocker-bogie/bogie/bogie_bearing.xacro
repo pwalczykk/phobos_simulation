@@ -39,6 +39,14 @@
             </inertial>
         </link>
 
+        <gazebo reference="${name}">
+            <mu1> .2 </mu1>
+            <mu2> .2 </mu2>
+            <material> Gazebo/Grey </material>
+            <selfCollide> True </selfCollide>
+        </gazebo>
+
+
             <joint name="${name}_joint" type="revolute">
                 <parent link="${parent}"/>
                 <child link="${name}"/>
@@ -48,11 +56,8 @@
                 <dynamics damping="1"/>
             </joint>
 
-            <gazebo reference="${name}">
-                <mu1> .2 </mu1>
-                <mu2> .2 </mu2>
-                <material> Gazebo/Grey </material>
-                <selfCollide> True </selfCollide>
+            <gazebo reference="${name}_joint">
+                <provideFeedback value="true"/>
             </gazebo>
 
             <transmission name="${name}_transmission">

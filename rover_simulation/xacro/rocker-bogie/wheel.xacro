@@ -34,6 +34,16 @@
             </inertial>
         </link>
 
+        <gazebo reference="wheel_${name}">
+            <mu1 value="0.5"/>
+            <mu2 value="0.5"/>
+            <!-- <kp  value="10000.0" /> -->
+            <!-- <kd  value="10000.0" /> -->
+            <!-- <fdir1 value="0 1 0"/> -->
+            <material value="Gazebo/Black"/>
+            <selfCollide value="True"/>
+        </gazebo>
+
         <joint name="wheel_${name}_joint" type="continuous">
             <parent link="${parent}"/>
             <child link="wheel_${name}"/>
@@ -43,14 +53,8 @@
             <dynamics damping="1"/>
         </joint>
 
-        <gazebo reference="wheel_${name}">
-            <mu1 value="0.5"/>
-            <mu2 value="0.5"/>
-            <!-- <kp  value="10000.0" /> -->
-            <!-- <kd  value="10000.0" /> -->
-            <!-- <fdir1 value="0 1 0"/> -->
-            <material value="Gazebo/Black"/>
-            <selfCollide value="True"/>
+        <gazebo reference="wheel_${name}_joint">
+            <provideFeedback value="true"/>
         </gazebo>
 
         <gazebo>

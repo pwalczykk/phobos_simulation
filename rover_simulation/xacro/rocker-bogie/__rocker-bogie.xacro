@@ -107,4 +107,62 @@
         </plugin>
     </gazebo>
 
+
+    <gazebo>
+        <plugin name="bogie_l_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>bogie_l_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/bogie_l_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="bogie_r_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>bogie_r_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/bogie_r_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+
+    <gazebo>
+        <plugin name="wheel_fl_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_fl_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_fl_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_fr_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_fr_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_fr_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_ml_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_ml_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_ml_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_mr_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_mr_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_mr_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_bl_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_bl_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_bl_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_br_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_br_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_br_joint</topic>
+        </plugin>
+    </gazebo>
+
 </robot>
