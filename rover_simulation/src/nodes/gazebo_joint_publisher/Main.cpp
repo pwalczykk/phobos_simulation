@@ -22,8 +22,8 @@ int main(int argc, char *argv[]) {
     joint_state_publisher.Add("link4_joint");
     joint_state_publisher.Add("finger1_joint");
     joint_state_publisher.Add("finger2_joint");
-    joint_state_publisher.Add("tower_yaw_joint");
-    joint_state_publisher.Add("tower_pitch_joint");
+    // joint_state_publisher.Add("tower_yaw_joint");
+    // joint_state_publisher.Add("tower_pitch_joint");
     joint_state_publisher.Add("wheel_bl_joint");
     joint_state_publisher.Add("wheel_ml_joint");
     joint_state_publisher.Add("wheel_fl_joint");

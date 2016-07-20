@@ -9,6 +9,6 @@
 
     <xacro:include filename="rocker-bogie/__rocker-bogie.xacro"/>
     <xacro:include filename="base/__base.xacro"/>
-    <!-- <xacro:include filename="arm/__arm.xacro"/> -->
+    <xacro:include filename="arm/__arm.xacro"/>
 
 </robot>
