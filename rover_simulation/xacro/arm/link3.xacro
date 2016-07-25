@@ -59,8 +59,8 @@
             <plugin name="${name}_joint_limiter" filename="libJointLimiter.so">
                 <joint>${name}_joint</joint>
                 <topic>/rover/${name}_velocity_controller</topic>
-                <lower>-1.1</lower>
-                <upper>2.3</upper>
+                <lower>-2.3</lower>
+                <upper>1.1</upper>
             </plugin>
         </gazebo>
         <gazebo>
