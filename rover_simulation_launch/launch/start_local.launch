@@ -5,4 +5,5 @@
     <include file="$(find rover_simulation_launch)/launch/subst/video_stream.launch"/>
     <include file="$(find rover_simulation_launch)/launch/subst/control.launch"/>
     <include file="$(find rover_simulation_launch)/launch/subst/keyboard.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/subst/rviz.launch"/>
 </launch>
