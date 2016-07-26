@@ -5,6 +5,7 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     rospy
     dynamic_reconfigure
+    rover_rpi_uart
 )
 
 generate_dynamic_reconfigure_options(
@@ -38,6 +39,11 @@ target_link_libraries(gazebo_joint_publisher ${catkin_LIBRARIES})
 add_executable(gazebo_joint_dynamometer_recorder
     src/nodes/gazebo_joint_dynamometer_recorder/src/Main.cpp)
 target_link_libraries(gazebo_joint_dynamometer_recorder ${catkin_LIBRARIES})
+
+add_executable(gazebo_uart433_controler
+    src/nodes/gazebo_uart433_controler/Main.cpp)
+add_dependencies(gazebo_uart433_controler ${catkin_EXPORTED_TARGETS})
+target_link_libraries(gazebo_uart433_controler ${catkin_LIBRARIES})
 
 find_package(roscpp REQUIRED)
 find_package(std_msgs REQUIRED)
