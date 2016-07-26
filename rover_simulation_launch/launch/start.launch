@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find rover_simulation_launch)/launch/rover_spawn.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/teleop_wifi.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/localization.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/stereovision.launch"/>
+</launch>
