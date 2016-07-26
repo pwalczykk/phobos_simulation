@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find rover_simulation_launch)/launch/subst/rover_spawn.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/subst/localization.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/subst/stereovision.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/subst/video_stream.launch"/>
+    <include file="$(find rover_simulation_launch)/launch/subst/control.launch"/>
+</launch>
