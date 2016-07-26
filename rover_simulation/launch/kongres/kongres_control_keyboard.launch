@@ -7,7 +7,7 @@
 
     <node
         name="keyboard_teleop"
-        pkg="rover_keyboard_teleop"
+        pkg="rover_teleop"
         type="keyboard_teleop"
         respawn="false"
         output="screen"
