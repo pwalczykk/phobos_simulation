@@ -6,5 +6,4 @@
     <!-- VISUALIZATION -->
     <include file="$(find rover_simulation_launch)/launch/subst/rviz.launch"/>
     <include file="$(find rover_simulation_launch)/launch/subst/video_view.launch"/>
-    <include file="$(find rover_simulation_launch)/launch/subst/stereovision.launch"/>
 </launch>
