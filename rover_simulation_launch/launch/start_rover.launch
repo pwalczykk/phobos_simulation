@@ -1,6 +1,4 @@
 <launch>
-    <!-- <include file="$(find rover_simulation_launch)/launch/subst/gazebo.launch"/> -->
-    <include file="$(find rover_simulation_launch)/launch/subst/rover_spawn.launch"/>
     <include file="$(find rover_simulation_launch)/launch/subst/localization.launch"/>
     <include file="$(find rover_simulation_launch)/launch/subst/video_stream.launch"/>
 </launch>
