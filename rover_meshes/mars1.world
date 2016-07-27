@@ -38,7 +38,7 @@
         <collision name="collision">
           <geometry>
             <heightmap>
-              <uri>file://textures/krater4.png</uri>
+              <uri>file://media/materials/textures/krater4.png</uri>
               <size>129 129 15</size>
               <pos>0 0 0</pos>
             </heightmap>
@@ -61,7 +61,7 @@
                 <fade_dist>5</fade_dist>
               </blend>
               </blend>
-              <uri>file://textures/krater4.png</uri>
+              <uri>file://media/materials/textures/krater4.png</uri>
               <size>129 129 15</size>
               <pos>0 0 0</pos>
             </heightmap>
