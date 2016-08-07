@@ -1,6 +1,0 @@
-<launch>
-    <include file="$(find rover_simulation_launch)/launch/subst/localization.launch"/>
-    <include file="$(find rover_simulation_launch)/launch/subst/stereovision.launch"/>
-    <include file="$(find rover_simulation_launch)/launch/subst/video_stream.launch"/>
-    <include file="$(find rover_simulation_launch)/launch/subst/gazebo433_uart.launch"/>
-</launch>

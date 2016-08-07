@@ -1,3 +1,0 @@
-<launch>
-    <node name="gazebo_uart433_controler" pkg="rover_simulation" type="gazebo_uart433_controler" respawn="true" output="screen" />
-</launch>

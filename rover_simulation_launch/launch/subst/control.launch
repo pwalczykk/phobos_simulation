@@ -1,4 +1,0 @@
-<launch>
-    <node name="gazebo_wheel_controller" pkg="rover_simulation" type="gazebo_wheel_controller" output="screen" respawn="true"/>
-    <node name="keyboard_teleop" pkg="rover_teleop" type="keyboard_teleop" respawn="false" output="screen" />
-</launch>
