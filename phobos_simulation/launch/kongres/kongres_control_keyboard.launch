@@ -1,0 +1,15 @@
+<launch>
+    <node
+        name="keyboard"
+        pkg="keyboard"
+        type="keyboard"
+    ></node>
+
+    <node
+        name="keyboard_teleop"
+        pkg="rover_teleop"
+        type="keyboard_teleop"
+        respawn="false"
+        output="screen"
+    ></node>
+</launch>

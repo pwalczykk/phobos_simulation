@@ -1,0 +1,14 @@
+<launch>
+    <param
+        name="stone1_description"
+        command="$(find xacro)/xacro --inorder $(find rover_meshes)/xacro/stone1.xacro"
+    />
+
+    <node
+        name="spawn_urdf"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-param robot_description -urdf -model stone1 -z 3"
+    />
+
+</launch>

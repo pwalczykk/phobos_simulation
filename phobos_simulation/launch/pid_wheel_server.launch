@@ -1,0 +1,43 @@
+<launch>
+
+        <node
+            name="controller_server"
+            pkg="rover_simulation"
+            type="controller_server"
+            output="screen"
+            args="0 0 0 /rover/wheel_fl_velocity_controller"
+        />
+        <node
+            name="rqt_plot"
+            pkg="rqt_plot"
+            type="rqt_plot"
+            output="screen"
+            args="/rover/wheel_fl_velocity_controller/command:vel_curr"
+        />
+        <node
+            name="rqt_reconfigure"
+            pkg="rqt_reconfigure"
+            type="rqt_reconfigure"
+            output="screen"
+        />
+        
+        <node name="relay_topic_01" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kp /rover/wheel_fr_velocity_controller/Kp"/>
+        <node name="relay_topic_02" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Ki /rover/wheel_fr_velocity_controller/Ki"/>
+        <node name="relay_topic_03" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kd /rover/wheel_fr_velocity_controller/Kd"/>
+
+        <node name="relay_topic_04" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kp /rover/wheel_ml_velocity_controller/Kp"/>
+        <node name="relay_topic_05" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Ki /rover/wheel_ml_velocity_controller/Ki"/>
+        <node name="relay_topic_06" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kd /rover/wheel_ml_velocity_controller/Kd"/>
+
+        <node name="relay_topic_07" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kp /rover/wheel_mr_velocity_controller/Kp"/>
+        <node name="relay_topic_08" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Ki /rover/wheel_mr_velocity_controller/Ki"/>
+        <node name="relay_topic_09" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kd /rover/wheel_mr_velocity_controller/Kd"/>
+
+        <node name="relay_topic_10" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kp /rover/wheel_bl_velocity_controller/Kp"/>
+        <node name="relay_topic_11" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Ki /rover/wheel_bl_velocity_controller/Ki"/>
+        <node name="relay_topic_12" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kd /rover/wheel_bl_velocity_controller/Kd"/>
+
+        <node name="relay_topic_13" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kp /rover/wheel_br_velocity_controller/Kp"/>
+        <node name="relay_topic_14" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Ki /rover/wheel_br_velocity_controller/Ki"/>
+        <node name="relay_topic_15" pkg="topic_tools" type="relay" output="screen" args="/rover/wheel_fl_velocity_controller/Kd /rover/wheel_br_velocity_controller/Kd"/>
+</launch>

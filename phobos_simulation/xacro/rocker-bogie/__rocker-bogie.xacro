@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rocker-bogie">
+
+<!-- INCLUDED FILES -->
+    <xacro:include filename="rocker/__rocker.xacro"/>
+    <xacro:include filename="bogie/__bogie.xacro"/>
+    <xacro:include filename="suspension_beam.xacro"/>
+    <xacro:include filename="wheel.xacro"/>
+
+<!-- PROPERIES -->
+    <!-- SUSPENSION PROPERTIES-->
+    <xacro:property name="suspension_width" value=".580"/>
+
+    <xacro:property name="bogie_x" value="-.292"/>
+    <xacro:property name="bogie_y" value=" .000"/>
+    <xacro:property name="bogie_z" value="-.100"/>
+
+    <xacro:property name="wheel_f_x" value=" .319"/>
+    <xacro:property name="wheel_f_y" value=" .000"/>
+    <xacro:property name="wheel_f_z" value="-.305"/>
+
+    <xacro:property name="wheel_m_x" value=" .165"/>
+    <xacro:property name="wheel_m_y" value=" .020"/>
+    <xacro:property name="wheel_m_z" value="-.205"/>
+
+    <xacro:property name="wheel_b_x" value="-.165"/>
+    <xacro:property name="wheel_b_y" value="0"/>
+    <xacro:property name="wheel_b_z" value="-.205"/>
+
+    <!-- WHEELS POSITIONS -->
+    <xacro:property name="wheel_base_f" value=".550"/>
+    <xacro:property name="wheel_base_m" value=".600"/>
+    <xacro:property name="wheel_base_b" value=".500"/>
+
+    <xacro:property name="h_wheel" value=".250"/>
+    <xacro:property name="l_wheel_f" value=".305"/>
+
+    <!-- CUSTOM SIM PROPS -->
+    <xacro:property name="h_bogie" value=".170"/>
+    <xacro:property name="l_bogie" value=".305"/>
+    <xacro:property name="l_wheel_m" value=".200"/>
+    <xacro:property name="l_wheel_b" value=".200"/>
+
+    <!-- ELEMENTS DIAMETERS -->
+    <xacro:property name="suspension_beam_length" value=".600"/>
+    <xacro:property name="suspension_beam_radius" value=".025"/>
+
+    <xacro:property name="rocker_bearing_length" value=".100"/>
+    <xacro:property name="rocker_bearing_radius" value=".035"/>
+
+    <xacro:property name="bogie_bearing_length" value=".100"/>
+    <xacro:property name="bogie_bearing_radius" value=".030"/>
+
+    <xacro:property name="wheel_width" value=".100"/>
+    <xacro:property name="wheel_radius" value=".100"/>
+
+<!-- RELATIVE VARIABLES -->
+    <xacro:property name="f_wheel_deviation" value="${(wheel_base_f - wheel_base_m)/2}"/>
+    <xacro:property name="b_wheel_deviation" value="${(wheel_base_b - wheel_base_m)/2}"/>
+    <xacro:property name="wheel_offset" value=".100"/>
+
+<!-- MAIN LINK -->
+    <xacro:suspension_beam name="suspension_beam"/>
+
+<!-- SUSPENSION -->
+    <xacro:rocker name="rocker_l" parent="suspension_beam" x="0" y="${suspension_width/2}"    z="0" side="1"/>  <!-- 1 = left -->
+    <xacro:rocker name="rocker_r" parent="suspension_beam" x="0" y="${-suspension_width/2}"    z="0" side="-1"/> <!-- -1 = right -->
+
+    <xacro:bogie name="bogie_l" parent="rocker_l_bearing" x="${bogie_x}" y="${bogie_y}"  z="${bogie_z}" side="1"/>
+    <xacro:bogie name="bogie_r" parent="rocker_r_bearing" x="${bogie_x}" y="${bogie_y}"  z="${bogie_z}" side="-1"/>
+
+<!-- WHEELS -->
+    <xacro:wheel name="fl" parent="rocker_l_bearing" x="${wheel_f_x}" y="${+wheel_f_y}"  z="${wheel_f_z}" side="1"/>
+    <xacro:wheel name="fr" parent="rocker_r_bearing" x="${wheel_f_x}" y="${-wheel_f_y}"  z="${wheel_f_z}" side="-1"/>
+
+    <xacro:wheel name="ml" parent="bogie_l_bearing"  x="${wheel_m_x}" y="${+wheel_m_y}"  z="${wheel_m_z}" side="1"/>
+    <xacro:wheel name="mr" parent="bogie_r_bearing"  x="${wheel_m_x}" y="${-wheel_m_y}"  z="${wheel_m_z}" side="-1"/>
+
+    <xacro:wheel name="bl" parent="bogie_l_bearing"  x="${wheel_b_x}" y="${+wheel_b_y}"  z="${wheel_b_z}" side="1"/>
+    <xacro:wheel name="br" parent="bogie_r_bearing"  x="${wheel_b_x}" y="${-wheel_b_y}"  z="${wheel_b_z}" side="-1"/>
+
+<!-- MY DIFFERENTIAL PLUGIN -->
+    <gazebo>
+        <plugin name="differential_pid" filename="libDifferentialPID.so">
+            <leftJoint>rocker_l_bearing_joint</leftJoint>
+            <rightJoint>rocker_r_bearing_joint</rightJoint>
+            <topic>/rover/differential_pid</topic>
+            <Kp>1000</Kp>
+            <Ki>0</Ki>
+            <Kd>3000</Kd>
+            <limit>10000</limit>
+        </plugin>
+    </gazebo>
+
+ <!-- DYNAMOMETER PLUGINS -->
+    <gazebo>
+        <plugin name="rocker_l_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>rocker_l_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/rocker_l_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="rocker_r_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>rocker_r_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/rocker_r_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+
+    <gazebo>
+        <plugin name="bogie_l_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>bogie_l_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/bogie_l_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="bogie_r_bearing_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>bogie_r_bearing_joint</joint>
+            <topic>/rover/joint_dynamometer/bogie_r_bearing_joint</topic>
+        </plugin>
+    </gazebo>
+
+
+    <gazebo>
+        <plugin name="wheel_fl_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_fl_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_fl_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_fr_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_fr_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_fr_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_ml_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_ml_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_ml_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_mr_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_mr_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_mr_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_bl_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_bl_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_bl_joint</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="wheel_br_joint_dynamometer" filename="libJointDynamometer.so">
+            <joint>wheel_br_joint</joint>
+            <topic>/rover/joint_dynamometer/wheel_br_joint</topic>
+        </plugin>
+    </gazebo>
+
+</robot>

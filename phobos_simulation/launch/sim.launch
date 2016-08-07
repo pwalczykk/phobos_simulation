@@ -1,0 +1,5 @@
+<launch>
+  <node name="gzserver" pkg="gazebo_ros" type="gzserver" output="screen"/>
+
+  <node name="gzclient" pkg="gazebo_ros" type="gzclient" output="screen"/>
+</launch>

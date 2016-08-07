@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wheel">
+
+<!-- GEOMETRY -->
+    <xacro:macro name="wheel_geometry">
+        <origin rpy="1.57075 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </xacro:macro>
+
+<!-- MATERIAL -->
+    <xacro:macro name="wheel_material">
+        <material name="black">
+            <color rgba=".0 .0 .0 1"/>
+        </material>
+    </xacro:macro>
+
+<!-- LINK -->
+    <xacro:macro name="wheel" params="name parent x y z side">
+
+        <link name="wheel_${name}">
+            <visual>
+                <xacro:wheel_geometry/>
+                <xacro:wheel_material/>
+            </visual>
+            <collision>
+                <xacro:wheel_geometry/>
+            </collision>
+            <inertial>
+                 <mass value="1.67"/>
+                 <origin xyz="0 0 0" rpy="0 0 0"/>
+                 <inertia ixx=".007228" ixy="0" ixz="0" iyy=".011596" iyz="0" izz=".007228"/>
+            </inertial>
+        </link>
+
+        <gazebo reference="wheel_${name}">
+            <mu1 value="0.5"/>
+            <mu2 value="0.5"/>
+            <!-- <kp  value="10000.0" /> -->
+            <!-- <kd  value="10000.0" /> -->
+            <!-- <fdir1 value="0 1 0"/> -->
+            <material value="Gazebo/Black"/>
+            <selfCollide value="True"/>
+        </gazebo>
+
+        <joint name="wheel_${name}_joint" type="continuous">
+            <parent link="${parent}"/>
+            <child link="wheel_${name}"/>
+            <origin rpy="${-side*0.02} 0 0" xyz="${x} ${y} ${z}"/>
+            <axis xyz="0 1 0"/>
+            <limit effort="100" velocity="10"/>
+            <dynamics damping="1"/>
+        </joint>
+
+        <gazebo reference="wheel_${name}_joint">
+            <provideFeedback value="true"/>
+        </gazebo>
+
+        <gazebo>
+            <plugin name="wheel_${name}_joint_limiter" filename="libJointLimiter.so">
+                <joint>wheel_${name}_joint</joint>
+                <topic>/rover/wheel_${name}_velocity_controller</topic>
+                <lower>-9999999</lower>
+                <upper>9999999</upper>
+            </plugin>
+        </gazebo>
+        <gazebo>
+            <plugin name="wheel_${name}_controller" filename="libControllerPID.so">
+                <joint>wheel_${name}_joint</joint>
+                <topic>/rover/wheel_${name}_velocity_controller</topic>
+                <Kp>2</Kp>
+                <Ki>0.1</Ki>
+                <Kd>0.1</Kd>
+                <limit>100</limit>
+            </plugin>
+        </gazebo>
+
+        <!--transmission name="${name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_wheel_joint">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_wheel_motor">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission-->
+
+    </xacro:macro>
+</robot>

@@ -1,0 +1,14 @@
+<launch>
+    <param
+        name="robot_description"
+        command="$(find xacro)/xacro.py $(find rover_simulation)/xacro/rover.xacro"
+    />
+
+    <node
+        name="spawn_urdf"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-param robot_description -urdf -model rover -z 2.5 -J link1_joint -1.24"
+    />
+
+</launch>

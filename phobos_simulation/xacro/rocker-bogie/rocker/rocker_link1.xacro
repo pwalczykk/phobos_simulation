@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rocker_link1">
+
+<!-- GEOMETRY -->
+    <xacro:macro name="rocker_link1_geometry_1">
+        <origin rpy="0 0 0" xyz="${rocker_link1_offset_x} ${rocker_link1_offset_y} ${rocker_link1_offset_z}" />
+        <geometry>
+            <box size="${rocker_link1_length} ${rocker_link1_width} ${rocker_link1_height}"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="rocker_link1_geometry_2">
+        <origin rpy="1.57075 0 0" xyz="${-rocker_link1_length/2+rocker_link1_offset_x} ${rocker_link1_offset_y} ${rocker_link1_offset_z}" />
+        <geometry>
+            <cylinder length="${rocker_link1_width}" radius="${rocker_link1_height/2}"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="rocker_link1_geometry_3">
+        <origin rpy="1.57075 0 0" xyz="${rocker_link1_length/2+rocker_link1_offset_x} ${rocker_link1_offset_y} ${rocker_link1_offset_z}" />
+        <geometry>
+            <cylinder length="${rocker_link1_width}" radius="${rocker_link1_height/2}"/>
+        </geometry>
+    </xacro:macro>
+
+
+<!-- MATERIAL -->
+    <xacro:macro name="rocker_link1_material">
+        <material name="light_blue">
+            <color rgba=".3 .3 .6 1"/>
+        </material>
+    </xacro:macro>
+
+<!-- LINK -->
+    <xacro:macro name="rocker_link1" params="name parent x y z pitch">
+        <link name="${name}">
+            <visual>
+                <xacro:rocker_link1_geometry_1/>
+                <xacro:rocker_link1_material/>
+            </visual>
+            <visual>
+                <xacro:rocker_link1_geometry_2/>
+                <xacro:rocker_link1_material/>
+            </visual>
+            <visual>
+                <xacro:rocker_link1_geometry_3/>
+                <xacro:rocker_link1_material/>
+            </visual>
+            <collision>
+                <xacro:rocker_link1_geometry_1/>
+            </collision>
+            <collision>
+                <xacro:rocker_link1_geometry_2/>
+            </collision>
+            <collision>
+                <xacro:rocker_link1_geometry_3/>
+            </collision>
+            <inertial>
+                 <origin rpy="0 0 0" xyz="${rocker_link1_offset_x} ${rocker_link1_offset_y} ${rocker_link1_offset_z}" />
+                 <mass value="0"/>
+                 <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+        <gazebo reference="${name}">
+            <mu1> .2 </mu1>
+            <mu2> .2 </mu2>
+            <material> Gazebo/Blue </material>
+            <selfCollide>True</selfCollide>
+        </gazebo>
+
+        <joint name="${name}_joint" type="fixed">
+            <parent link="${parent}"/>
+            <child link="${name}"/>
+            <origin rpy="0 ${pitch} 0" xyz="${x} ${y} ${z}"/>
+        </joint>
+
+    </xacro:macro>
+</robot>

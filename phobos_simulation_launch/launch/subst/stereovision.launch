@@ -1,0 +1,11 @@
+<launch>
+    <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" output="screen" ns="/rover">
+        <param name="~approximate_sync" value="True"/>
+
+        <remap from="/rover/left/image_raw" to="/rover/camera1/image_raw" />
+        <remap from="/rover/left/camera_info" to="/rover/camera1/camera_info" />
+
+        <remap from="/rover/right/image_raw" to="/rover/camera2/image_raw" />
+        <remap from="/rover/right/camera_info" to="/rover/camera2/camera_info"/>
+    </node>
+</launch>

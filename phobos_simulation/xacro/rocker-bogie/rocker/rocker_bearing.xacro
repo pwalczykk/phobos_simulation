@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rocker">
+
+<!-- GEOMETRY -->
+    <xacro:macro name="rocker_geometry">
+        <origin rpy="1.57075 0 0"/>
+        <geometry>
+            <cylinder length="${rocker_bearing_length}" radius="${rocker_bearing_radius}"/>
+        </geometry>
+    </xacro:macro>
+
+<!-- MATERIAL -->
+    <xacro:macro name="rocker_material">
+        <material name="dark_green">
+            <color rgba=".3 .5 .2 1"/>
+        </material>
+    </xacro:macro>
+
+<!-- LINK -->
+    <xacro:macro name="rocker_bearing" params="name parent x y z side">
+        <link name="${name}">
+            <visual>
+                <xacro:rocker_geometry/>
+                <xacro:rocker_material/>
+            </visual>
+            <collision>
+                <xacro:rocker_geometry/>
+            </collision>
+            <inertial>
+                <mass value="3"/>
+                <xacro:if value="${side == 1}"> <!-- LEFT-->
+                    <origin xyz="0.247725 0.035298 -0.066751" rpy="0 0 0"/>
+                    <inertia ixx="0.050813" ixy="0.009439" ixz="-0.021963" iyy="0.135830" iyz="0.004023" izz="0.097893"/>
+                </xacro:if>
+                <xacro:if value="${side == -1}"> <!-- RIGHT-->
+                    <origin xyz="0.247727 -0.035298 -0.066751" rpy="0 0 0"/>
+                    <inertia ixx="0.050813" ixy="-0.009439" ixz="-0.021960" iyy="0.135831" iyz="-0.004023" izz="0.097894"/>
+                </xacro:if>
+            </inertial>
+        </link>
+
+        <gazebo reference="${name}">
+            <mu1> .2 </mu1>
+            <mu2> .2 </mu2>
+            <material> Gazebo/Grey </material>
+            <selfCollide> True </selfCollide>
+        </gazebo>
+
+            <joint name="${name}_joint" type="revolute">
+                <parent link="${parent}"/>
+                <child link="${name}"/>
+                <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
+                <axis xyz="0 1 0"/>
+                <limit effort="10000" velocity="1" lower="-0.5" upper="0.5"/>
+                <dynamics damping="2" friction="0"/>
+            </joint>
+
+            <gazebo reference="${name}_joint">
+                <provideFeedback value="true"/>
+            </gazebo>
+
+    </xacro:macro>
+
+</robot>

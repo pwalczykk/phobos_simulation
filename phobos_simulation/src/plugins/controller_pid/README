@@ -1,0 +1,13 @@
+Author: Przemyslaw Walczyk
+Email: pwalczykk@gmail.com
+
+### PID [velocity -> effort] controller plugin
+
+
+Usage:
+<gazebo>
+    <plugin name="pid_controller_2" filename="libControllerPlugin.so">
+        <joint>rwheel_joint</joint>
+        <topic>/rover/link1_velocity_controller</topic>
+    </plugin>
+</gazebo>

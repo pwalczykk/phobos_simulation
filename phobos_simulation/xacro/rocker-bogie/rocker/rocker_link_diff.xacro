@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link_diff">
+
+
+<!-- GEOMETRY -->
+    <xacro:macro name="link_diff_geometry">
+        <geometry>
+            <cylinder length="${link_diff_lenght}" radius="${link_diff_radius}"/>
+        </geometry>
+    </xacro:macro>
+
+<!-- MATERIAL -->
+    <xacro:macro name="link_diff_material">
+        <material name="green2">
+            <color rgba=".3 .7 .3 1"/>
+        </material>
+    </xacro:macro>
+
+<!-- LINK -->
+    <xacro:macro name="link_diff" params="name parent x y z">
+        <link name="${name}">
+            <visual>
+                <xacro:link_diff_geometry/>
+                <xacro:link_diff_material/>
+            </visual>
+            <collision>
+                <xacro:link_diff_geometry/>
+            </collision>
+            <inertial>
+                <mass value="0"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+            </inertial>
+        </link>
+
+            <joint name="${name}_joint" type="fixed">
+                <parent link="${parent}"/>
+                <child link="${name}"/>
+                <origin rpy="1.57075  0 0" xyz="${x} ${y} ${z}"/>
+            </joint>
+
+            <gazebo reference="${name}">
+                <mu1> .2 </mu1>
+                <mu2> .2 </mu2>
+                <material> Gazebo/Grey </material>
+                <selfCollide> True </selfCollide>
+            </gazebo>
+
+    </xacro:macro>
+
+</robot>

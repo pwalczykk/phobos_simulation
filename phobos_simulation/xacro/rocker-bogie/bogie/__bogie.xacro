@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bogie">
+
+<!-- INCLUDE -->
+    <xacro:include filename="bogie_bearing.xacro"/>
+    <xacro:include filename="bogie_link1.xacro"/>
+    <xacro:include filename="bogie_link2.xacro"/>
+
+<!-- PROPERTIES -->
+    <xacro:property name="bogie_link1_length"      value=".215"/>
+    <xacro:property name="bogie_link1_width"       value=".040"/>
+    <xacro:property name="bogie_link1_height"      value=".050"/>
+    <xacro:property name="bogie_link1_x"            value=".000"/>
+    <xacro:property name="bogie_link1_y"            value=".000"/>
+    <xacro:property name="bogie_link1_z"            value=".000"/>
+    <xacro:property name="bogie_link1_offset_x"    value="${bogie_link1_length/2}"/>
+    <xacro:property name="bogie_link1_offset_y"    value=".025"/>
+    <xacro:property name="bogie_link1_offset_z"    value=".000"/>
+    <xacro:property name="bogie_link1_pitch"        value="-0.38"/>
+
+    <xacro:property name="bogie_link2_length"      value=".215"/>
+    <xacro:property name="bogie_link2_width"       value=".040"/>
+    <xacro:property name="bogie_link2_height"      value=".050"/>
+    <xacro:property name="bogie_link2_x"            value=".000"/>
+    <xacro:property name="bogie_link2_y"            value=".000"/>
+    <xacro:property name="bogie_link2_z"            value=".000"/>
+    <xacro:property name="bogie_link2_offset_x"    value="${-bogie_link2_length/2}"/>
+    <xacro:property name="bogie_link2_offset_y"    value="-.025"/>
+    <xacro:property name="bogie_link2_offset_z"    value=".000"/>
+    <xacro:property name="bogie_link2_pitch"        value="0.38"/>
+
+<!-- LINKS -->
+    <xacro:macro name="bogie" params="name parent x y z side">
+
+        <xacro:bogie_bearing name="${name}_bearing" parent="${parent}" x="${x}" y="${y}" z="${z}" side="${side}"/>
+
+        <!-- <xacro:bogie_link1 name="${name}_link1" parent="${name}_bearing"
+            x="${bogie_link1_x}" y="${-bogie_link1_y}"  z="${bogie_link1_z}"
+            pitch="${-bogie_link1_pitch}" side="${side}"/>
+
+        <xacro:bogie_link2 name="${name}_link2" parent="${name}_bearing"
+            x="${bogie_link2_x}" y="${-bogie_link2_y}"  z="${bogie_link2_z}"
+            pitch="${-bogie_link2_pitch}" side="${side}"/> -->
+
+    </xacro:macro>
+
+
+</robot>

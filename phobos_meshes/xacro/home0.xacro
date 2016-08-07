@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="home0">
+
+    <link name="world"/>
+
+    <joint name="world_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="world"/>
+        <child link="base_link"/>
+    </joint>
+
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <sphere radius="3"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="3"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <mass value="10000"/>
+            <inertia ixx="30" ixy="0.000" ixz="0.000" iyy="30" iyz="0.000" izz="30"/>
+        </inertial>
+    </link>
+
+    <gazebo reference="base_link">
+        <mu1> 1 </mu1>
+        <mu2> 1 </mu2>
+        <selfCollide> False </selfCollide>
+        <static> True </static>
+    </gazebo>
+
+</robot>

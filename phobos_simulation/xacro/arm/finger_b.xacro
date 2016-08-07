@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="finger_b">
+
+<!-- GEOMETRY -->
+    <xacro:macro name="finger_b_geometry_1">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+            <box size="${finger_length} ${finger_width} ${finger_height}"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="finger_b_geometry_2">
+        <origin rpy="0 0 ${0.785*side}" xyz="${finger_length/2+finger_length/6*0.707} ${finger_length/6*0.707*side} 0" />
+        <geometry>
+            <box size="${finger_length/3} ${finger_width} ${finger_height}"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="finger_b_geometry_3">
+        <origin rpy="0 0 ${0.785*side}" xyz="${finger_length/2} 0 0" />
+        <geometry>
+            <cylinder length="${finger_height}" radius="${finger_width/2}"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="finger_b_geometry_4">
+        <origin rpy="0 0 ${0.785*side}" xyz="${finger_length/2+finger_length/6*1.414} ${finger_length/6*1.414*side} 0" />
+        <geometry>
+            <cylinder length="${finger_height}" radius="${finger_width/2}"/>
+        </geometry>
+    </xacro:macro>
+
+<!-- MATERIAL -->
+    <xacro:macro name="finger_b_material">
+        <material name="finger_b_color">
+            <color rgba=".4 .4 .8 1"/>
+        </material>
+    </xacro:macro>
+
+<!-- LINK -->
+    <xacro:macro name="finger_b" params="name parent x y z side">
+
+        <link name="${name}">
+            <visual>
+                <xacro:finger_b_geometry_1/>
+                <xacro:finger_b_material/>
+            </visual>
+            <collision>
+                <xacro:finger_b_geometry_1/>
+            </collision>
+
+            <visual>
+                <xacro:finger_b_geometry_2/>
+                <xacro:finger_b_material/>
+            </visual>
+            <collision>
+                <xacro:finger_b_geometry_2/>
+            </collision>
+
+            <visual>
+                <xacro:finger_b_geometry_3/>
+                <xacro:finger_b_material/>
+            </visual>
+            <collision>
+                <xacro:finger_b_geometry_3/>
+            </collision>
+
+            <visual>
+                <xacro:finger_b_geometry_4/>
+                <xacro:finger_b_material/>
+            </visual>
+            <collision>
+                <xacro:finger_b_geometry_4/>
+            </collision>
+
+            <inertial>
+                <origin rpy="0 0 0" xyz="0 0 0" />
+                <mass value=".1"/>
+                <inertia ixx=".0003" ixy="0.000" ixz="0.000" iyy=".0003" iyz="0.000" izz=".0003"/>
+            </inertial>
+        </link>
+        <gazebo reference="${name}">
+            <mu1> 10 </mu1>
+            <mu2> 10 </mu2>
+            <material> Gazebo/Grey </material>
+            <selfCollide>True</selfCollide>
+        </gazebo>
+
+        <joint name="${name}_joint" type="fixed">
+            <parent link="${parent}"/>
+            <child link="${name}"/>
+            <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
+        </joint>
+        <!--gazebo reference="${name}_joint">
+            <stopCfm>0.8</stopCfm>
+            <stopErp>0.5</stopErp>
+            <provideFeedback>true</provideFeedback>
+            <implicitSpringDamper>true</implicitSpringDamper>
+            <fudgeFactor>0.0</fudgeFactor>
+        </gazebo-->
+        <!--gazebo>
+            <plugin name="${name}_joint_limiter" filename="libJointLimiter.so">
+                <joint>${name}_joint</joint>
+                <topic>/rover/${name}_velocity_controller</topic>
+                <lower>0</lower>
+                <upper>${link4_width/2 - finger_b_width}</upper>
+            </plugin>
+        </gazebo>
+        <gazebo>
+            <plugin name="${name}_controller" filename="libControllerPID.so">
+                <joint>${name}_joint</joint>
+                <topic>/rover/${name}_velocity_controller</topic>
+                <Kp>10</Kp>
+                <Ki>0</Ki>
+                <Kd>5</Kd>
+            </plugin>
+        </gazebo-->
+
+
+        <!--transmission name="${name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_joint">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_motor">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission-->
+
+    </xacro:macro>
+</robot>

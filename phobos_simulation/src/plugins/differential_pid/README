@@ -1,0 +1,25 @@
+Author: Przemyslaw Walczyk
+Email: pwalczykk@gmail.com
+
+### Differential with PID controller plugin
+
+
+Usage:
+            URDF:
+<gazebo>
+    <plugin name="diff_pid" filename="libDifferentialPID.so">
+        <middleJoint>main_body_joint</middleJoint>
+        <leftJoint>rocker_l_bearing_joint</leftJoint>
+        <rightJoint>rocker_r_bearing_joint</rightJoint>
+        <topic>/rover/differential_pid</topic>
+    </plugin>
+</gazebo>
+
++           LAUNCH:
+
+<node
+    name="differential_pid_server"
+    pkg="rover_simulation"
+    type="controller_server"
+    args="20 0.1 0.1 /rover/differential_pid"
+/>

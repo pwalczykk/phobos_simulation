@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="home0">
+      <static>true</static>
+      <pose> -12 -5 2 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <sphere> <radius> 3 </radius> </sphere> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <sphere> <radius> 3 </radius> </sphere> </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="home1">
+      <static>true</static>
+      <pose> -7 -10 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry> <sphere> <radius> 3 </radius> </sphere> </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry> <sphere> <radius> 3 </radius> </sphere> </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="heightmap">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <heightmap>
+              <uri>file://media/materials/textures/krater4.png</uri>
+              <size>129 129 15</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+
+        <visual name="visual_abcedf">
+          <geometry>
+            <heightmap>
+              <use_terrain_paging>false</use_terrain_paging>
+              <texture>
+                <diffuse>file://media/materials/textures/tekstura1350.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>7</size>
+              </texture>
+
+              </texture>
+              <blend>
+                <min_height>0</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              </blend>
+              <uri>file://media/materials/textures/krater4.png</uri>
+              <size>129 129 15</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+
+      </link>
+    </model>
+
+  </world>
+</sdf>
