@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rover_gps_sim)
+project(phobos_gps_sim)
 
 set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
@@ -19,4 +19,4 @@ catkin_package()
 add_executable(gps_sim_node
     src/gps_sim_node/Main.cpp)
 target_link_libraries(gps_sim_node ${catkin_LIBRARIES})
-add_dependencies(gps_sim_node ${rover_gps_sim}_gencfg)
+add_dependencies(gps_sim_node ${phobos_gps_sim}_gencfg)

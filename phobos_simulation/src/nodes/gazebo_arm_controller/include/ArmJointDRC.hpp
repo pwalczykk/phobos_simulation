@@ -2,14 +2,14 @@
 #define ARMJOINTDR_HPP_
 
 #include "dynamic_reconfigure/server.h"
-#include "rover_simulation/ArmJointDRCConfig.h"
+#include "phobos_simulation/ArmJointDRCConfig.h"
 
 #include "ArmJointsController.hpp"
 
 class ArmJointDRC : public ArmJointsController{
     ros::NodeHandle nh;
-    dynamic_reconfigure::Server<rover_simulation::ArmJointDRCConfig> server;
-    dynamic_reconfigure::Server<rover_simulation::ArmJointDRCConfig>::CallbackType f;
+    dynamic_reconfigure::Server<phobos_simulation::ArmJointDRCConfig> server;
+    dynamic_reconfigure::Server<phobos_simulation::ArmJointDRCConfig>::CallbackType f;
 
 public:
     ArmJointDRC() : ArmJointsController()
@@ -19,7 +19,7 @@ public:
     };
     ~ArmJointDRC(){};
 
-    void DRCallback(rover_simulation::ArmJointDRCConfig &config, uint32_t level)
+    void DRCallback(phobos_simulation::ArmJointDRCConfig &config, uint32_t level)
     {
         ArmJointsController::pid[0].Set(config.link0_Kp, config.link0_Ki, config.link0_Kd);
         ArmJointsController::pid[1].Set(config.link1_Kp, config.link1_Ki, config.link1_Kd);

@@ -2,7 +2,7 @@
 #define SUBWHEELVEL_HPP_
 
 #include <ros/ros.h>
-#include <rover_rpi_uart/WheelsVel2.h>
+#include <phobos_shared/WheelsVel16.h>
 
 class SubWheelVel{
     ros::NodeHandle *nh;
@@ -17,7 +17,7 @@ public:
     }
     ~SubWheelVel(){}
 
-    void MsgInterrupt(const rover_rpi_uart::WheelsVel2 msg){
+    void MsgInterrupt(const phobos_shared::WheelsVel16 msg){
         pub->UpdateVel(7, msg.wheels_left);
         pub->UpdateVel(9, msg.wheels_left);
         pub->UpdateVel(11, msg.wheels_left);

@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(rover_simulation)
+project(phobos_simulation)
 
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     rospy
     dynamic_reconfigure
-    rover_rpi_uart
+    phobos_shared
 )
 
 generate_dynamic_reconfigure_options(
@@ -19,7 +19,7 @@ add_executable(controller_server
     src/nodes/controller_server/ControllerServerMain.cpp
     src/nodes/controller_server/ControllerServer.cpp)
 target_link_libraries(controller_server ${catkin_LIBRARIES})
-add_dependencies(controller_server ${rover_simulation}_gencfg)
+add_dependencies(controller_server ${phobos_simulation}_gencfg)
 
 add_executable(gazebo_wheel_controller
     src/nodes/gazebo_wheel_controller/src/Main.cpp
@@ -30,7 +30,7 @@ add_executable(gazebo_arm_controller
     src/nodes/gazebo_arm_controller/src/Main.cpp
     src/nodes/gazebo_arm_controller/src/ArmJointsController.cpp)
 target_link_libraries(gazebo_arm_controller ${catkin_LIBRARIES})
-add_dependencies(gazebo_arm_controller ${rover_simulation}_gencfg)
+add_dependencies(gazebo_arm_controller ${phobos_simulation}_gencfg)
 
 add_executable(gazebo_joint_publisher
     src/nodes/gazebo_joint_publisher/Main.cpp)

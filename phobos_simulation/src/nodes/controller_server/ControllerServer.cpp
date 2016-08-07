@@ -39,7 +39,7 @@ void ControllerServer::SetPID(double Kp, double Ki, double Kd)
 }
 
 
-void ControllerServer::DRCallback(rover_simulation::ControllerServerConfig &config, uint32_t level)
+void ControllerServer::DRCallback(phobos_simulation::ControllerServerConfig &config, uint32_t level)
 {
     if(this->Kp != config.Kp){
         this->Kp = config.Kp;

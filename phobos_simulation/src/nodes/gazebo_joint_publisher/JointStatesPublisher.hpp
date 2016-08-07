@@ -23,7 +23,7 @@ public:
         sensor_msgs::JointState __msg_js;
         msg_js.header.seq = 0;
         msg_js.header.stamp = ros::Time::now();
-        msg_js.header.frame_id = "rover_js";
+        msg_js.header.frame_id = "phobos_js";
     }
 
     void Add(std::string joint_name){

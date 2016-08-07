@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package>
-  <name>rover_meshes</name>
+  <name>phobos_meshes</name>
   <version>0.0.0</version>
-  <description>The rover_meshes package</description>
+  <description>The phobos_meshes package</description>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+  <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
   <maintainer email="pwalczykk@todo.todo">pwalczykk</maintainer>
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/rover_meshes</url> -->
+  <!-- <url type="website">http://wiki.ros.org/phobos_meshes</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->

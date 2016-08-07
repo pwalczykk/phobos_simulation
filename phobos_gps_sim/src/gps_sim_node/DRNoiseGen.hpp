@@ -4,7 +4,7 @@
 #include <ros/ros.h>
 
 #include <dynamic_reconfigure/server.h>
-#include <rover_gps_sim/DRNoiseGenConfig.h>
+#include <phobos_gps_sim/DRNoiseGenConfig.h>
 
 #include <cstdlib>
 #include <ctime>
@@ -12,8 +12,8 @@
 #include <complex>
 
 class DRNoiseGen{
-    dynamic_reconfigure::Server<rover_gps_sim::DRNoiseGenConfig> server;
-    dynamic_reconfigure::Server<rover_gps_sim::DRNoiseGenConfig>::CallbackType f;
+    dynamic_reconfigure::Server<phobos_gps_sim::DRNoiseGenConfig> server;
+    dynamic_reconfigure::Server<phobos_gps_sim::DRNoiseGenConfig>::CallbackType f;
 protected:
     double x_noise;
     double y_noise;
@@ -33,7 +33,7 @@ public:
         z_noise = 0;
     }
 
-    void Callback(rover_gps_sim::DRNoiseGenConfig &config, uint32_t level){
+    void Callback(phobos_gps_sim::DRNoiseGenConfig &config, uint32_t level){
         this->x_noise = config.x_noise;
         this->y_noise = config.y_noise;
         this->z_noise = config.z_noise;

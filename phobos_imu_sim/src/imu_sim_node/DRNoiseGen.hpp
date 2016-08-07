@@ -4,7 +4,7 @@
 #include <ros/ros.h>
 
 #include <dynamic_reconfigure/server.h>
-#include <rover_imu_sim/DRNoiseGenConfig.h>
+#include <phobos_imu_sim/DRNoiseGenConfig.h>
 
 #include <cstdlib>
 #include <ctime>
@@ -14,8 +14,8 @@
 //#define DEG2RAD 0.017452777778
 
 class DRNoiseGen{
-    dynamic_reconfigure::Server<rover_imu_sim::DRNoiseGenConfig> server;
-    dynamic_reconfigure::Server<rover_imu_sim::DRNoiseGenConfig>::CallbackType f;
+    dynamic_reconfigure::Server<phobos_imu_sim::DRNoiseGenConfig> server;
+    dynamic_reconfigure::Server<phobos_imu_sim::DRNoiseGenConfig>::CallbackType f;
 protected:
     double orient_noise;
     double ang_vel_noise;
@@ -36,7 +36,7 @@ public:
 
     }
 
-    void Callback(rover_imu_sim::DRNoiseGenConfig &config, uint32_t level){
+    void Callback(phobos_imu_sim::DRNoiseGenConfig &config, uint32_t level){
         this->orient_noise = config.orient_noise;
         this->ang_vel_noise = config.ang_vel_noise;
         this->lin_acc_noise = config.lin_acc_noise;
