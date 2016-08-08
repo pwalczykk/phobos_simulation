@@ -45,6 +45,17 @@ add_executable(gazebo_uart433_controler
 add_dependencies(gazebo_uart433_controler ${catkin_EXPORTED_TARGETS})
 target_link_libraries(gazebo_uart433_controler ${catkin_LIBRARIES})
 
+add_executable(gazebo_spi_motor_transmiter
+    src/nodes/gazebo_spi_motor_transmiter/Main.cpp)
+target_link_libraries(gazebo_spi_motor_transmiter ${catkin_LIBRARIES})
+
+add_executable(keyboard_teleop
+    src/nodes/keyboard_teleop/src/Main.cpp
+    src/nodes/keyboard_teleop/src/KeyListener.cpp
+    src/nodes/keyboard_teleop/src/PublisherFloat64.cpp
+    src/nodes/keyboard_teleop/src/PublisherTwist.cpp)
+target_link_libraries(keyboard_teleop ${catkin_LIBRARIES})
+
 find_package(roscpp REQUIRED)
 find_package(std_msgs REQUIRED)
 include_directories(${roscpp_INCLUDE_DIRS})

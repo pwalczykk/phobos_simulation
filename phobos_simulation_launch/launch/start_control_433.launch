@@ -1,8 +1,8 @@
 <launch>
     <!-- CONRTROL -->
-    <include file="$(find rover_control_launch)/launch/radio433teleop_uart.launch"/>
+    <include file="$(find phobos_control_launch)/launch/radio433teleop_uart.launch"/>
 
     <!-- VISUALIZATION -->
-    <include file="$(find rover_simulation_launch)/launch/subst/rviz.launch"/>
-    <include file="$(find rover_simulation_launch)/launch/subst/video_view.launch"/>
+    <include file="$(find phobos_simulation_launch)/launch/subst/rviz.launch"/>
+    <include file="$(find phobos_simulation_launch)/launch/subst/video_view.launch"/>
 </launch>

@@ -1,14 +1,14 @@
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro.py $(find rover_simulation)/xacro/rover.xacro --inorder"/>
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find phobos_simulation)/xacro/rover.xacro --inorder"/>
 
 <!-- PATH PUBLISER -->
-    <node name="traveled_path_publisher" pkg="rover_localization" type="traveled_path_publisher" output="screen"/>
+    <node name="pub_traveled_path" pkg="phobos_control_telemetry" type="pub_traveled_path" output="screen"/>
 
 <!-- GPS -->
-    <node name="gps_sim_node" pkg="rover_gps_sim" type="gps_sim_node"/>
+    <node name="gps_sim_node" pkg="phobos_gps_sim" type="gps_sim_node"/>
 
 <!-- IMU -->
-    <node name="imu_sim_node" pkg="rover_imu_sim" type="imu_sim_node"/>
+    <node name="imu_sim_node" pkg="phobos_imu_sim" type="imu_sim_node"/>
 
 <!-- STATE PUBLISHER -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
@@ -16,7 +16,7 @@
     </node>
 
 <!-- JOINT PUBLISHER -->
-    <node name="gazebo_joint_publisher" pkg="rover_simulation" type="gazebo_joint_publisher" output="screen"/>
+    <node name="gazebo_joint_publisher" pkg="phobos_simulation" type="gazebo_joint_publisher" output="screen"/>
 
 <!-- KALMAN FILTER -->
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" clear_params="true" output="screen">
