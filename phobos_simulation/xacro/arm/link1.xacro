@@ -69,17 +69,27 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
         <gazebo>
-            <plugin name="${name}_joint_limiter" filename="libJointLimiter.so">
+            <plugin name="joint_limiter_${name}" filename="libJointLimiter.so">
                 <joint>${name}_joint</joint>
-                <topic>/rover/${name}_velocity_controller</topic>
+                <topic>/simulation/controller/vel/${name}</topic>
                 <lower>-1.25</lower>
                 <upper>1.6</upper>
             </plugin>
         </gazebo>
         <gazebo>
-            <plugin name="${name}_controller" filename="libControllerPID.so">
+            <plugin name="joint_encoder_${name}" filename="libJointEncoder.so">
                 <joint>${name}_joint</joint>
-                <topic>/rover/${name}_velocity_controller</topic>
+                <topic>/simulation/encoder/abs/${name}</topic>
+                <lower>-1.25</lower>
+                <upper>1.6</upper>
+                <absolute>1</absolute>
+                <resolution>3600</resolution>
+            </plugin>
+        </gazebo>
+        <gazebo>
+            <plugin name="joint_controller_${name}" filename="libControllerPID.so">
+                <joint>${name}_joint</joint>
+                <topic>/simulation/controller/vel/${name}</topic>
                 <Kp>30</Kp>
                 <Ki>3</Ki>
                 <Kd>2</Kd>

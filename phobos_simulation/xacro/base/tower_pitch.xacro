@@ -51,17 +51,17 @@
             </gazebo>
 
             <gazebo>
-                <plugin name="${name}_joint_limiter" filename="libJointLimiter.so">
+                <plugin name="joint_limiter_${name}" filename="libJointLimiter.so">
                     <joint>${name}_joint</joint>
-                    <topic>/rover/${name}_velocity_controller</topic>
+                    <topic>/simulation/controller/vel/${name}</topic>
                     <lower>-0.785</lower>
                     <upper>0.785</upper>
                 </plugin>
             </gazebo>
             <gazebo>
-                <plugin name="${name}_controller" filename="libControllerPID.so">
+                <plugin name="joint_controller_${name}" filename="libControllerPID.so">
                     <joint>${name}_joint</joint>
-                    <topic>/rover/${name}_velocity_controller</topic>
+                    <topic>/simulation/controller/vel/${name}</topic>
                     <Kp>0.8</Kp>
                     <Ki>0.25</Ki>
                     <Kd>0.1</Kd>

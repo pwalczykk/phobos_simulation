@@ -5,12 +5,14 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     rospy
     dynamic_reconfigure
+    tf
     phobos_shared
 )
 
 generate_dynamic_reconfigure_options(
   cfg/ControllerServer.cfg
   cfg/ArmJointDRC.cfg
+  cfg/ImuNoiseGen.cfg
 )
 
 catkin_package()
@@ -45,9 +47,18 @@ add_executable(gazebo_uart433_controler
 add_dependencies(gazebo_uart433_controler ${catkin_EXPORTED_TARGETS})
 target_link_libraries(gazebo_uart433_controler ${catkin_LIBRARIES})
 
-add_executable(gazebo_spi_motor_transmiter
-    src/nodes/gazebo_spi_motor_transmiter/Main.cpp)
-target_link_libraries(gazebo_spi_motor_transmiter ${catkin_LIBRARIES})
+add_executable(gazebo_motor_transceiver
+    src/nodes/gazebo_motor_transceiver/Main.cpp)
+target_link_libraries(gazebo_motor_transceiver ${catkin_LIBRARIES})
+
+add_executable(gazebo_imu_handler
+    src/nodes/gazebo_imu_handler/Main.cpp)
+target_link_libraries(gazebo_imu_handler ${catkin_LIBRARIES})
+add_dependencies(gazebo_imu_handler ${phobos_simulation}_gencfg)
+
+add_executable(uart_433_simulation_bridge
+    src/nodes/uart_433_simulation_bridge/Main.cpp)
+target_link_libraries(uart_433_simulation_bridge ${catkin_LIBRARIES})
 
 add_executable(keyboard_teleop
     src/nodes/keyboard_teleop/src/Main.cpp
@@ -67,6 +78,9 @@ include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS} -std=c++11")
 
+add_library(JointEncoder SHARED
+    src/plugins/joint_encoder/JointEncoder.cc)
+target_link_libraries(JointEncoder ${GAZEBO_libraries} ${roscpp_LIBRARIES})
 
 add_library(JointDynamometer SHARED
     src/plugins/joint_dynamometer/JointDynamometer.cc)

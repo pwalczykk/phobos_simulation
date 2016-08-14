@@ -7,11 +7,11 @@
 #include "ros/ros.h"
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
-#include "geometry_msgs/Wrench.h"
+#include "std_msgs/Int16.h"
 
 namespace gazebo
 {
-    class JointDynamometer : public ModelPlugin
+    class JointEncoder : public ModelPlugin
     {
         std::unique_ptr<ros::NodeHandle> rosNode;
         ros::CallbackQueue rosQueue;
@@ -22,15 +22,25 @@ namespace gazebo
         physics::JointPtr joint;
 
         ros::Publisher pub;
-        // ros::Subscriber sub;
-        int period;
-        int counter;
 
-        geometry_msgs::Wrench msg;
-        physics::JointWrench wrench;
+        std_msgs::Int16 msg;
+
+        int counter;
+        int period;
+
+        double highest_position;
+        double lowest_position;
+        double current_position;
+        double prev_position;
+
+        bool absolute;
+        double resolution;
+        double impulse_per_radian;
+
+        int16_t encoder_value;
 
     public:
-        JointDynamometer();
+        JointEncoder();
 
         void OnUpdate(const common::UpdateInfo &info);
 
@@ -38,14 +48,11 @@ namespace gazebo
         void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
 
         void Load_Publisher(std::string topic, ros::Publisher& pub);
-        // void Load_Subscrieber(std::string topic,
-        //                       ros::Subscriber& sub,
-        //                       void (JointDynamometer::*function)(const std_msgs::Float64ConstPtr&));
 
         void Load_SimLoop();
         void Load_NodeROS();
 
         void QueueThread();
     };
-    GZ_REGISTER_MODEL_PLUGIN(JointDynamometer)
+    GZ_REGISTER_MODEL_PLUGIN(JointEncoder)
 }

@@ -149,17 +149,17 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
         <gazebo>
-            <plugin name="${name}_joint_limiter" filename="libJointLimiter.so">
+            <plugin name="joint_limiter_${name}" filename="libJointLimiter.so">
                 <joint>${name}_joint</joint>
-                <topic>/rover/${name}_velocity_controller</topic>
+                <topic>/simulation/controller/vel/${name}</topic>
                 <lower>0</lower>
                 <upper>${link4_width/2 - finger_width}</upper>
             </plugin>
         </gazebo>
         <gazebo>
-            <plugin name="${name}_controller" filename="libControllerPID.so">
+            <plugin name="joint_controller_${name}" filename="libControllerPID.so">
                 <joint>${name}_joint</joint>
-                <topic>/rover/${name}_velocity_controller</topic>
+                <topic>/simulation/controller/vel/${name}</topic>
                 <Kp>10</Kp>
                 <Ki>0</Ki>
                 <Kd>5</Kd>

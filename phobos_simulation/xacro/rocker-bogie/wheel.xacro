@@ -58,17 +58,27 @@
         </gazebo>
 
         <gazebo>
-            <plugin name="wheel_${name}_joint_limiter" filename="libJointLimiter.so">
+            <plugin name="joint_limiter_wheel_${name}" filename="libJointLimiter.so">
                 <joint>wheel_${name}_joint</joint>
-                <topic>/rover/wheel_${name}_velocity_controller</topic>
+                <topic>/simulation/controller/vel/wheel_${name}</topic>
                 <lower>-9999999</lower>
                 <upper>9999999</upper>
             </plugin>
         </gazebo>
         <gazebo>
-            <plugin name="wheel_${name}_controller" filename="libControllerPID.so">
+            <plugin name="joint_encoder_wheel_${name}" filename="libJointEncoder.so">
                 <joint>wheel_${name}_joint</joint>
-                <topic>/rover/wheel_${name}_velocity_controller</topic>
+                <topic>/simulation/encoder/rel/wheel_${name}</topic>
+                <lower>0</lower>
+                <upper>9999999</upper>
+                <absolute>0</absolute>
+                <resolution>3600</resolution>
+            </plugin>
+        </gazebo>
+        <gazebo>
+            <plugin name="joint_controller_wheel_${name}" filename="libControllerPID.so">
+                <joint>wheel_${name}_joint</joint>
+                <topic>/simulation/controller/vel/wheel_${name}</topic>
                 <Kp>2</Kp>
                 <Ki>0.1</Ki>
                 <Kd>0.1</Kd>
