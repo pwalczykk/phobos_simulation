@@ -3,11 +3,14 @@
 
 #include "GzLinkState.hpp"
 #include "DRNoiseGen.hpp"
+
 #include "sensor_msgs/Imu.h"
 
 #define DERIVATIVE_BUFF 4
 
 class GzTF;
+class PubAccMagnitude;
+class PubVertDevMagnitude;
 
 class GzIMU : public GzLinkState, public DRNoiseGen{
     ros::NodeHandle nh;
@@ -20,6 +23,9 @@ class GzIMU : public GzLinkState, public DRNoiseGen{
 protected:
     sensor_msgs::Imu msg_imu;
     friend class GzTF;
+    friend class PubAccMagnitude;
+    friend class PubVertDevMagnitude;
+
 
 public:
     GzIMU(std::string link_name, std::string topic_imu) : GzLinkState(link_name), DRNoiseGen() {

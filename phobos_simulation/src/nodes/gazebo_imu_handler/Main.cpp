@@ -2,6 +2,9 @@
 #include "GzLinkState.hpp"
 #include "GzIMU.hpp"
 #include "GzTF.hpp"
+#include "PubAccMagnitude.hpp"
+#include "PubVertDevMagnitude.hpp"
+
 
 #define RATE 10
 
@@ -13,6 +16,9 @@ int main(int argc, char *argv[]) {
 
     GzIMU __imu("base_link", "/rover/sensors/imu");
     GzTF __tf(&__imu);
+
+    PubAccMagnitude("/rover/security/acceleration_magniotude", &nh, &__imu);
+    PubVertDevMagnitude("/rover/security/vertical_deviation_magnitude", &nh, &__imu);
 
     while(ros::ok()){
         __imu.Update();

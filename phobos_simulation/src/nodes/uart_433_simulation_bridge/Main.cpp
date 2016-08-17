@@ -53,17 +53,17 @@ int main(int argc, char** argv){
         ros::spinOnce();
 
 // ROVER
-        int wheels_left = __status.wheels_left;
-        int wheels_right = __status.wheels_right;
-        int link_0  = __status.link_0;
-        int link_1  = __status.link_1;
-        int link_2  = __status.link_2;
-        int link_3  = __status.link_3;
-        int link_4  = __status.link_4;
-        int grip_force = __status.grip_force;
+        wheels_vel.msg.wheels_left = __status.wheels_left;
+        wheels_vel.msg.wheels_right = __status.wheels_right;
+        wheels_vel.Publish();
 
-        wheels_vel.Publish(wheels_left, wheels_right);
-        arm_vel.Publish(link_0, link_1, link_2, link_3, link_4, grip_force);
+        arm_vel.msg.link_0 = __status.link_0;
+        arm_vel.msg.link_1 = __status.link_1;
+        arm_vel.msg.link_2 = __status.link_2;
+        arm_vel.msg.link_3 = __status.link_3;
+        arm_vel.msg.link_4 = __status.link_4;
+        arm_vel.msg.grip_force  = __status.grip_force;
+        arm_vel.Publish();
 
 // CONTROL
         pose_orient.msg_pose.header.seq++;
