@@ -9,10 +9,10 @@
         output="screen"
         ns="rover"
         args="arm_base_position_controller
-              link1_position_controller
-              link2_position_controller
-              link3_position_controller
-              link4_position_controller
+              link_1_position_controller
+              link_2_position_controller
+              link_3_position_controller
+              link_4_position_controller
               tower_base_position_controller
               tower_head_position_controller
               finger1_position_controller

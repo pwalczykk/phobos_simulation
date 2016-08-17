@@ -101,7 +101,7 @@
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission-->
-  <link name="rocker_l_link1">
+  <link name="rocker_l_link_1">
     <visual>
       <origin rpy="0 0 0" xyz="0.05 0.0 0.0"/>
       <geometry>
@@ -153,18 +153,18 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="rocker_l_link1">
+  <gazebo reference="rocker_l_link_1">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="rocker_l_link1_joint" type="fixed">
+  <joint name="rocker_l_link_1_joint" type="fixed">
     <parent link="rocker_l_bearing"/>
-    <child link="rocker_l_link1"/>
+    <child link="rocker_l_link_1"/>
     <origin rpy="0 0.2 0" xyz="0.0 -0.0 0.0"/>
   </joint>
-  <link name="rocker_l_link2">
+  <link name="rocker_l_link_2">
     <visual>
       <origin rpy="0 0 0" xyz="-0.125 0.0 0.0 "/>
       <geometry>
@@ -188,18 +188,18 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="rocker_l_link2">
+  <gazebo reference="rocker_l_link_2">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="rocker_l_link2_joint" type="fixed">
-    <parent link="rocker_l_link1"/>
-    <child link="rocker_l_link2"/>
+  <joint name="rocker_l_link_2_joint" type="fixed">
+    <parent link="rocker_l_link_1"/>
+    <child link="rocker_l_link_2"/>
     <origin rpy="0 -1.28 0" xyz="-0.2 -0.0 0.0"/>
   </joint>
-  <link name="rocker_l_link3">
+  <link name="rocker_l_link_3">
     <visual>
       <origin rpy="0 0 0" xyz="0.095 0.0 0.0 "/>
       <geometry>
@@ -236,15 +236,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="rocker_l_link3">
+  <gazebo reference="rocker_l_link_3">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="rocker_l_link3_joint" type="fixed">
-    <parent link="rocker_l_link1"/>
-    <child link="rocker_l_link3"/>
+  <joint name="rocker_l_link_3_joint" type="fixed">
+    <parent link="rocker_l_link_1"/>
+    <child link="rocker_l_link_3"/>
     <origin rpy="0 1.31 0" xyz="0.3 -0.0 0.0"/>
   </joint>
   <!--xacro:link_diff name="${name}_link_diff" parent="${name}_bearing"  x="0" y="0" z="0"/-->
@@ -298,7 +298,7 @@
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission-->
-  <link name="rocker_r_link1">
+  <link name="rocker_r_link_1">
     <visual>
       <origin rpy="0 0 0" xyz="0.05 0.0 0.0"/>
       <geometry>
@@ -350,18 +350,18 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="rocker_r_link1">
+  <gazebo reference="rocker_r_link_1">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="rocker_r_link1_joint" type="fixed">
+  <joint name="rocker_r_link_1_joint" type="fixed">
     <parent link="rocker_r_bearing"/>
-    <child link="rocker_r_link1"/>
+    <child link="rocker_r_link_1"/>
     <origin rpy="0 0.2 0" xyz="0.0 -0.0 0.0"/>
   </joint>
-  <link name="rocker_r_link2">
+  <link name="rocker_r_link_2">
     <visual>
       <origin rpy="0 0 0" xyz="-0.125 0.0 0.0 "/>
       <geometry>
@@ -385,18 +385,18 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="rocker_r_link2">
+  <gazebo reference="rocker_r_link_2">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="rocker_r_link2_joint" type="fixed">
-    <parent link="rocker_r_link1"/>
-    <child link="rocker_r_link2"/>
+  <joint name="rocker_r_link_2_joint" type="fixed">
+    <parent link="rocker_r_link_1"/>
+    <child link="rocker_r_link_2"/>
     <origin rpy="0 -1.28 0" xyz="-0.2 -0.0 0.0"/>
   </joint>
-  <link name="rocker_r_link3">
+  <link name="rocker_r_link_3">
     <visual>
       <origin rpy="0 0 0" xyz="0.095 0.0 0.0 "/>
       <geometry>
@@ -433,15 +433,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="rocker_r_link3">
+  <gazebo reference="rocker_r_link_3">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="rocker_r_link3_joint" type="fixed">
-    <parent link="rocker_r_link1"/>
-    <child link="rocker_r_link3"/>
+  <joint name="rocker_r_link_3_joint" type="fixed">
+    <parent link="rocker_r_link_1"/>
+    <child link="rocker_r_link_3"/>
     <origin rpy="0 1.31 0" xyz="0.3 -0.0 0.0"/>
   </joint>
   <!--xacro:link_diff name="${name}_link_diff" parent="${name}_bearing"  x="0" y="0" z="0"/-->
@@ -490,7 +490,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  <link name="bogie_l_link1">
+  <link name="bogie_l_link_1">
     <visual>
       <origin rpy="0 0 0" xyz="0.1075 0.025 0.0"/>
       <geometry>
@@ -527,18 +527,18 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="bogie_l_link1">
+  <gazebo reference="bogie_l_link_1">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="bogie_l_link1_joint" type="fixed">
+  <joint name="bogie_l_link_1_joint" type="fixed">
     <parent link="bogie_l_bearing"/>
-    <child link="bogie_l_link1"/>
+    <child link="bogie_l_link_1"/>
     <origin rpy="0 0.38 0" xyz="0.0 -0.0 0.0"/>
   </joint>
-  <link name="bogie_l_link2">
+  <link name="bogie_l_link_2">
     <visual>
       <origin rpy="0 0 0" xyz="-0.1075 -0.025 0.0"/>
       <geometry>
@@ -575,15 +575,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="bogie_l_link2">
+  <gazebo reference="bogie_l_link_2">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="bogie_l_link2_joint" type="fixed">
+  <joint name="bogie_l_link_2_joint" type="fixed">
     <parent link="bogie_l_bearing"/>
-    <child link="bogie_l_link2"/>
+    <child link="bogie_l_link_2"/>
     <origin rpy="0 -0.38 0" xyz="0.0 -0.0 0.0"/>
   </joint>
   <link name="bogie_r_bearing">
@@ -631,7 +631,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  <link name="bogie_r_link1">
+  <link name="bogie_r_link_1">
     <visual>
       <origin rpy="0 0 0" xyz="0.1075 -0.025 0.0"/>
       <geometry>
@@ -668,18 +668,18 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="bogie_r_link1">
+  <gazebo reference="bogie_r_link_1">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="bogie_r_link1_joint" type="fixed">
+  <joint name="bogie_r_link_1_joint" type="fixed">
     <parent link="bogie_r_bearing"/>
-    <child link="bogie_r_link1"/>
+    <child link="bogie_r_link_1"/>
     <origin rpy="0 0.38 0" xyz="0.0 -0.0 0.0"/>
   </joint>
-  <link name="bogie_r_link2">
+  <link name="bogie_r_link_2">
     <visual>
       <origin rpy="0 0 0" xyz="-0.1075 0.025 0.0"/>
       <geometry>
@@ -716,15 +716,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="bogie_r_link2">
+  <gazebo reference="bogie_r_link_2">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="bogie_r_link2_joint" type="fixed">
+  <joint name="bogie_r_link_2_joint" type="fixed">
     <parent link="bogie_r_bearing"/>
-    <child link="bogie_r_link2"/>
+    <child link="bogie_r_link_2"/>
     <origin rpy="0 -0.38 0" xyz="0.0 -0.0 0.0"/>
   </joint>
   <!-- WHEELS -->
@@ -1693,7 +1693,7 @@
     </sensor>
   </gazebo>
   <!-- LINK -->
-  <link name="link0">
+  <link name="link_0">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -1729,7 +1729,7 @@
       <inertia ixx=".003" ixy=".00" ixz=".00" iyy=".003" iyz=".00" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="link0">
+  <gazebo reference="link_0">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Orange </material>
@@ -1737,9 +1737,9 @@
     <implicitSpringDamper> True </implicitSpringDamper>
   </gazebo>
   <!-- JOINT -->
-  <joint name="link0_joint" type="revolute">
+  <joint name="link_0_joint" type="revolute">
     <parent link="main_body"/>
-    <child link="link0"/>
+    <child link="link_0"/>
     <origin rpy="0 0 0" xyz="0.15 0 0.125"/>
     <axis xyz="0 0 -1"/>
     <limit effort="100" lower="-3.14" upper="3.14" velocity="1"/>
@@ -1753,17 +1753,17 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
   <gazebo>
-    <plugin filename="libJointLimiter.so" name="link0_joint_limiter">
-      <joint>link0_joint</joint>
-      <topic>/rover/link0_velocity_controller</topic>
+    <plugin filename="libJointLimiter.so" name="link_0_joint_limiter">
+      <joint>link_0_joint</joint>
+      <topic>/rover/link_0_velocity_controller</topic>
       <lower>-3.14</lower>
       <upper>3.14</upper>
     </plugin>
   </gazebo>
   <gazebo>
-    <plugin filename="libControllerPID.so" name="link0_controller">
-      <joint>link0_joint</joint>
-      <topic>/rover/link0_velocity_controller</topic>
+    <plugin filename="libControllerPID.so" name="link_0_controller">
+      <joint>link_0_joint</joint>
+      <topic>/rover/link_0_velocity_controller</topic>
       <Kp>20</Kp>
       <Ki>2</Ki>
       <Kd>1</Kd>
@@ -1780,7 +1780,7 @@
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
         </transmission-->
-  <link name="link1">
+  <link name="link_1">
     <visual>
       <origin rpy="0 0 0" xyz="-0.25 0 0"/>
       <geometry>
@@ -1817,15 +1817,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="link1">
+  <gazebo reference="link_1">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="link1_joint" type="revolute">
-    <parent link="link0"/>
-    <child link="link1"/>
+  <joint name="link_1_joint" type="revolute">
+    <parent link="link_0"/>
+    <child link="link_1"/>
     <origin rpy="0 0 0" xyz="0 0 0.06"/>
     <axis xyz="0 1 0"/>
     <limit effort="100" lower="0" upper="3.14" velocity="1"/>
@@ -1839,17 +1839,17 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
   <gazebo>
-    <plugin filename="libJointLimiter.so" name="link1_joint_limiter">
-      <joint>link1_joint</joint>
-      <topic>/rover/link1_velocity_controller</topic>
+    <plugin filename="libJointLimiter.so" name="link_1_joint_limiter">
+      <joint>link_1_joint</joint>
+      <topic>/rover/link_1_velocity_controller</topic>
       <lower>0</lower>
       <upper>3.14</upper>
     </plugin>
   </gazebo>
   <gazebo>
-    <plugin filename="libControllerPID.so" name="link1_controller">
-      <joint>link1_joint</joint>
-      <topic>/rover/link1_velocity_controller</topic>
+    <plugin filename="libControllerPID.so" name="link_1_controller">
+      <joint>link_1_joint</joint>
+      <topic>/rover/link_1_velocity_controller</topic>
       <Kp>30</Kp>
       <Ki>3</Ki>
       <Kd>2</Kd>
@@ -1865,13 +1865,13 @@
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
         </transmission-->
-  <link name="link2">
+  <link name="link_2">
     <visual>
       <origin rpy="0 0 0" xyz="0.125 0 0.025"/>
       <geometry>
         <box size="0.25 0.05 0.05"/>
       </geometry>
-      <material name="link2_color">
+      <material name="link_2_color">
         <color rgba=".4 .4 .8 1"/>
       </material>
     </visual>
@@ -1880,7 +1880,7 @@
       <geometry>
         <cylinder length="0.05" radius="0.025"/>
       </geometry>
-      <material name="link2_color">
+      <material name="link_2_color">
         <color rgba=".4 .4 .8 1"/>
       </material>
     </visual>
@@ -1902,15 +1902,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="link2">
+  <gazebo reference="link_2">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="link2_joint" type="revolute">
-    <parent link="link1"/>
-    <child link="link2"/>
+  <joint name="link_2_joint" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
     <origin rpy="0 0 0" xyz="-0.5 0 0.035"/>
     <axis xyz="0 -1 0"/>
     <limit effort="100" lower="0" upper="5" velocity="1"/>
@@ -1924,17 +1924,17 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
   <gazebo>
-    <plugin filename="libJointLimiter.so" name="link2_joint_limiter">
-      <joint>link2_joint</joint>
-      <topic>/rover/link2_velocity_controller</topic>
+    <plugin filename="libJointLimiter.so" name="link_2_joint_limiter">
+      <joint>link_2_joint</joint>
+      <topic>/rover/link_2_velocity_controller</topic>
       <lower>0</lower>
       <upper>5</upper>
     </plugin>
   </gazebo>
   <gazebo>
-    <plugin filename="libControllerPID.so" name="link2_controller">
-      <joint>link2_joint</joint>
-      <topic>/rover/link2_velocity_controller</topic>
+    <plugin filename="libControllerPID.so" name="link_2_controller">
+      <joint>link_2_joint</joint>
+      <topic>/rover/link_2_velocity_controller</topic>
       <Kp>30</Kp>
       <Ki>3</Ki>
       <Kd>2</Kd>
@@ -1950,13 +1950,13 @@
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
         </transmission-->
-  <link name="link3">
+  <link name="link_3">
     <visual>
       <origin rpy="0 0 0" xyz="0.125 0 0"/>
       <geometry>
         <box size="0.25 0.04 0.04"/>
       </geometry>
-      <material name="link3_color">
+      <material name="link_3_color">
         <color rgba=".4 .4 .8 1"/>
       </material>
     </visual>
@@ -1972,15 +1972,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="link3">
+  <gazebo reference="link_3">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="link3_joint" type="revolute">
-    <parent link="link2"/>
-    <child link="link3"/>
+  <joint name="link_3_joint" type="revolute">
+    <parent link="link_2"/>
+    <child link="link_3"/>
     <origin rpy="0 0 0" xyz="0.25 0 0.025"/>
     <axis xyz="0 -1 0"/>
     <limit effort="30" lower="-3.14" upper="3.14" velocity="1"/>
@@ -1994,23 +1994,23 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
   <gazebo>
-    <plugin filename="libJointLimiter.so" name="link3_joint_limiter">
-      <joint>link3_joint</joint>
-      <topic>/rover/link3_velocity_controller</topic>
+    <plugin filename="libJointLimiter.so" name="link_3_joint_limiter">
+      <joint>link_3_joint</joint>
+      <topic>/rover/link_3_velocity_controller</topic>
       <lower>-3.14</lower>
       <upper>3.14</upper>
     </plugin>
   </gazebo>
   <gazebo>
-    <plugin filename="libControllerPID.so" name="link3_controller">
-      <joint>link3_joint</joint>
-      <topic>/rover/link3_velocity_controller</topic>
+    <plugin filename="libControllerPID.so" name="link_3_controller">
+      <joint>link_3_joint</joint>
+      <topic>/rover/link_3_velocity_controller</topic>
       <Kp>20</Kp>
       <Ki>0</Ki>
       <Kd>2</Kd>
     </plugin>
   </gazebo>
-  <gazebo reference="link3">
+  <gazebo reference="link_3">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
@@ -2033,13 +2033,13 @@
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
         </transmission-->
-  <link name="link4">
+  <link name="link_4">
     <visual>
       <origin rpy="0 0 0" xyz="0.025 0 0"/>
       <geometry>
         <box size="0.05 0.2 0.05"/>
       </geometry>
-      <material name="link4_color">
+      <material name="link_4_color">
         <color rgba=".4 .4 .8 1"/>
       </material>
     </visual>
@@ -2055,15 +2055,15 @@
       <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
     </inertial>
   </link>
-  <gazebo reference="link4">
+  <gazebo reference="link_4">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Blue </material>
     <selfCollide>False</selfCollide>
   </gazebo>
-  <joint name="link4_joint" type="revolute">
-    <parent link="link3"/>
-    <child link="link4"/>
+  <joint name="link_4_joint" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_4"/>
     <origin rpy="0 0 0" xyz="0.25 0 0"/>
     <axis xyz="1 0 0"/>
     <limit effort="40" lower="-3.14" upper="3.14" velocity="3"/>
@@ -2077,23 +2077,23 @@
             <fudgeFactor>0.0</fudgeFactor>
         </gazebo-->
   <gazebo>
-    <plugin filename="libJointLimiter.so" name="link4_joint_limiter">
-      <joint>link4_joint</joint>
-      <topic>/rover/link4_velocity_controller</topic>
+    <plugin filename="libJointLimiter.so" name="link_4_joint_limiter">
+      <joint>link_4_joint</joint>
+      <topic>/rover/link_4_velocity_controller</topic>
       <lower>-3.14</lower>
       <upper>3.14</upper>
     </plugin>
   </gazebo>
   <gazebo>
-    <plugin filename="libControllerPID.so" name="link4_controller">
-      <joint>link4_joint</joint>
-      <topic>/rover/link4_velocity_controller</topic>
+    <plugin filename="libControllerPID.so" name="link_4_controller">
+      <joint>link_4_joint</joint>
+      <topic>/rover/link_4_velocity_controller</topic>
       <Kp>1.05</Kp>
       <Ki>0</Ki>
       <Kd>0.02</Kd>
     </plugin>
   </gazebo>
-  <gazebo reference="link4">
+  <gazebo reference="link_4">
     <mu1> .2 </mu1>
     <mu2> .2 </mu2>
     <material> Gazebo/Yellow </material>
@@ -2160,7 +2160,7 @@
     <selfCollide>False</selfCollide>
   </gazebo>
   <joint name="finger1_joint" type="prismatic">
-    <parent link="link4"/>
+    <parent link="link_4"/>
     <child link="finger1"/>
     <origin rpy="0 0 0" xyz="0.15 0.09 0"/>
     <axis xyz="0 -1 0"/>
@@ -2245,7 +2245,7 @@
     <selfCollide>False</selfCollide>
   </gazebo>
   <joint name="finger2_joint" type="prismatic">
-    <parent link="link4"/>
+    <parent link="link_4"/>
     <child link="finger2"/>
     <origin rpy="0 0 0" xyz="0.15 -0.09 0"/>
     <axis xyz="0 1 0"/>
@@ -2309,7 +2309,7 @@
     </inertial>
   </link>
   <joint name="camera4_joint" type="fixed">
-    <parent link="link3"/>
+    <parent link="link_3"/>
     <child link="camera4"/>
     <origin rpy="0 0 0" xyz="0.15 0 0.1"/>
   </joint>
@@ -2342,7 +2342,7 @@
     </inertial>
   </link>
   <joint name="camera4_lens_joint" type="fixed">
-    <parent link="link3"/>
+    <parent link="link_3"/>
     <child link="camera4_lens"/>
     <origin rpy="0 0 0" xyz="0.15 0 0.1"/>
   </joint>

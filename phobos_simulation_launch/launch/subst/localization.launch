@@ -2,7 +2,7 @@
     <param name="robot_description" command="$(find xacro)/xacro.py $(find phobos_simulation)/xacro/rover.xacro --inorder"/>
 
 <!-- PATH PUBLISER -->
-    <node name="pub_traveled_path" pkg="phobos_control_telemetry" type="pub_traveled_path" output="screen"/>
+    <node name="pub_traveled_path" pkg="phobos_control_station" type="pub_traveled_path" output="screen"/>
 
 <!-- GPS -->
     <node name="gps_sim_node" pkg="phobos_gps_sim" type="gps_sim_node"/>

@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff_link2">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff_link_2">
 
 
 <!-- GEOMETRY -->
-    <xacro:macro name="diff_link2_geometry">
+    <xacro:macro name="diff_link_2_geometry">
         <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
         <geometry>
-            <cylinder length="${diff_link2_lenght}" radius="${diff_link2_radius}"/>
+            <cylinder length="${diff_link_2_lenght}" radius="${diff_link_2_radius}"/>
         </geometry>
     </xacro:macro>
 
 <!-- MATERIAL -->
-    <xacro:macro name="diff_link2_material">
+    <xacro:macro name="diff_link_2_material">
         <material name="green2">
             <color rgba=".3 .7 .3 1"/>
         </material>
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="diff_link2" params="name parent x y z">
+    <xacro:macro name="diff_link_2" params="name parent x y z">
         <link name="${name}">
             <visual>
-                <xacro:diff_link2_geometry/>
-                <xacro:diff_link2_material/>
+                <xacro:diff_link_2_geometry/>
+                <xacro:diff_link_2_material/>
             </visual>
             <collision>
-                <xacro:diff_link2_geometry/>
+                <xacro:diff_link_2_geometry/>
             </collision>
             <inertial>
                 <mass value=".3"/>

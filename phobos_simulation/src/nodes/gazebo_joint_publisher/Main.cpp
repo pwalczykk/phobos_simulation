@@ -15,11 +15,11 @@ int main(int argc, char *argv[]) {
 
     JointStatesPublisher joint_state_publisher;
 
-    joint_state_publisher.Add("link0_joint");
-    joint_state_publisher.Add("link1_joint");
-    joint_state_publisher.Add("link2_joint");
-    joint_state_publisher.Add("link3_joint");
-    joint_state_publisher.Add("link4_joint");
+    joint_state_publisher.Add("link_0_joint");
+    joint_state_publisher.Add("link_1_joint");
+    joint_state_publisher.Add("link_2_joint");
+    joint_state_publisher.Add("link_3_joint");
+    joint_state_publisher.Add("link_4_joint");
     joint_state_publisher.Add("finger1_joint");
     joint_state_publisher.Add("finger2_joint");
     // joint_state_publisher.Add("tower_yaw_joint");

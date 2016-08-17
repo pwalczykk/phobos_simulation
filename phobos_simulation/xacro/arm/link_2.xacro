@@ -1,35 +1,49 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link4">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link_2">
 
 <!-- GEOMETRY -->
-    <xacro:macro name="link4_geometry">
-        <origin rpy="0 0 0" xyz="${link4_length/2} 0 0" />
+    <xacro:macro name="link_2_geometry_1">
+        <origin rpy="0 0 0" xyz="${link_2_length/2} 0 ${link_2_height/2}" />
         <geometry>
-            <box size="${link4_length} ${link4_width} ${link4_height}"/>
+            <box size="${link_2_length} ${link_2_width} ${link_2_height}"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="link_2_geometry_2">
+        <origin rpy="1.57075 0 0" xyz="${link_2_length} 0 ${link_2_height/2}" />
+        <geometry>
+            <cylinder length="${link_2_width}" radius="${link_2_height/2}"/>
         </geometry>
     </xacro:macro>
 
 <!-- MATERIAL -->
-    <xacro:macro name="link4_material">
-        <material name="link4_color">
+    <xacro:macro name="link_2_material">
+        <material name="link_2_color">
             <color rgba=".4 .4 .8 1"/>
         </material>
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="link4" params="name parent x y z">
+    <xacro:macro name="link_2" params="name parent x y z">
 
         <link name="${name}">
             <visual>
-                <xacro:link4_geometry/>
-                <xacro:link4_material/>
+                <xacro:link_2_geometry_1/>
+                <xacro:link_2_material/>
+            </visual>
+            <visual>
+                <xacro:link_2_geometry_2/>
+                <xacro:link_2_material/>
             </visual>
             <collision>
-                <xacro:link4_geometry/>
+                <xacro:link_2_geometry_1/>
+            </collision>
+            <collision>
+                <xacro:link_2_geometry_2/>
             </collision>
             <inertial>
-                <origin rpy="0 0 0" xyz="${link4_length/2} 0 ${link4_height/2}" />
-                <mass value="0.7"/>
+                <origin rpy="0 0 0" xyz="${link_2_length/2} 0 ${link_2_height/2}" />
+                <mass value="1"/>
                 <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
             </inertial>
         </link>
@@ -44,8 +58,8 @@
             <parent link="${parent}"/>
             <child link="${name}"/>
             <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
-            <axis xyz="1 0 0"/>
-            <limit effort="40" velocity="3" lower="-3.14" upper="3.14"/>
+            <axis xyz="0 -1 0"/>
+            <limit effort="100" velocity="1" lower="0" upper="3.65"/>
             <dynamics damping="1"/>
         </joint>
         <!--gazebo reference="${name}_joint">
@@ -59,16 +73,16 @@
             <plugin name="joint_limiter_${name}" filename="libJointLimiter.so">
                 <joint>${name}_joint</joint>
                 <topic>/simulation/controller/vel/${name}</topic>
-                <lower>-3.14</lower>
-                <upper>3.14</upper>
+                <lower>0</lower>
+                <upper>3.65</upper>
             </plugin>
         </gazebo>
         <gazebo>
             <plugin name="joint_encoder_${name}" filename="libJointEncoder.so">
                 <joint>${name}_joint</joint>
                 <topic>/simulation/encoder/abs/${name}</topic>
-                <lower>-3.14</lower>
-                <upper>3.14</upper>
+                <lower>0</lower>
+                <upper>3.65</upper>
                 <absolute>1</absolute>
                 <resolution>3600</resolution>
             </plugin>
@@ -77,26 +91,12 @@
             <plugin name="joint_controller_${name}" filename="libControllerPID.so">
                 <joint>${name}_joint</joint>
                 <topic>/simulation/controller/vel/${name}</topic>
-                <Kp>1.05</Kp>
-                <Ki>0</Ki>
-                <Kd>0.02</Kd>
+                <Kp>30</Kp>
+                <Ki>3</Ki>
+                <Kd>2</Kd>
             </plugin>
         </gazebo>
 
-
-        <gazebo reference="${name}">
-            <mu1> .2 </mu1>
-            <mu2> .2 </mu2>
-            <material> Gazebo/Yellow </material>
-            <selfCollide>True</selfCollide>
-            <!--kp>1.0</kp>
-            <kd>1.0</kd>
-            <stopCfm>0.8</stopCfm>
-            <stopErp>0.5</stopErp>
-            <provideFeedback>true</provideFeedback>
-            <cfmDamping>true</cfmDamping>
-            <fudgeFactor>0.0</fudgeFactor-->
-        </gazebo>
 
         <!--transmission name="${name}_transmission">
             <type>transmission_interface/SimpleTransmission</type>

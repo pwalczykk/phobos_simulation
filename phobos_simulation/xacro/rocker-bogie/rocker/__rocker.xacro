@@ -3,44 +3,44 @@
 
 <!-- INCLUDE -->
     <xacro:include filename="rocker_bearing.xacro"/>
-    <xacro:include filename="rocker_link1.xacro"/>
-    <xacro:include filename="rocker_link2.xacro"/>
-    <xacro:include filename="rocker_link3.xacro"/>
+    <xacro:include filename="rocker_link_1.xacro"/>
+    <xacro:include filename="rocker_link_2.xacro"/>
+    <xacro:include filename="rocker_link_3.xacro"/>
     <xacro:include filename="rocker_link_diff.xacro"/>
 
 <!-- PROPERTIES -->
-    <xacro:property name="rocker_link1_length"      value=".500"/>
-    <xacro:property name="rocker_link1_width"       value=".040"/>
-    <xacro:property name="rocker_link1_height"      value=".050"/>
-    <xacro:property name="rocker_link1_x"            value=".000"/>
-    <xacro:property name="rocker_link1_y"            value=".000"/>
-    <xacro:property name="rocker_link1_z"            value=".000"/>
-    <xacro:property name="rocker_link1_offset_x"    value=".050"/>
-    <xacro:property name="rocker_link1_offset_y"    value=".000"/>
-    <xacro:property name="rocker_link1_offset_z"    value=".000"/>
-    <xacro:property name="rocker_link1_pitch"        value="-.2"/>
+    <xacro:property name="rocker_link_1_length"      value=".500"/>
+    <xacro:property name="rocker_link_1_width"       value=".040"/>
+    <xacro:property name="rocker_link_1_height"      value=".050"/>
+    <xacro:property name="rocker_link_1_x"            value=".000"/>
+    <xacro:property name="rocker_link_1_y"            value=".000"/>
+    <xacro:property name="rocker_link_1_z"            value=".000"/>
+    <xacro:property name="rocker_link_1_offset_x"    value=".050"/>
+    <xacro:property name="rocker_link_1_offset_y"    value=".000"/>
+    <xacro:property name="rocker_link_1_offset_z"    value=".000"/>
+    <xacro:property name="rocker_link_1_pitch"        value="-.2"/>
 
-    <xacro:property name="rocker_link2_length"      value=".250"/>
-    <xacro:property name="rocker_link2_width"       value=".040"/>
-    <xacro:property name="rocker_link2_height"      value=".050"/>
-    <xacro:property name="rocker_link2_x"            value="${-rocker_link1_length/2+rocker_link1_offset_x}"/>
-    <xacro:property name="rocker_link2_y"            value=".000"/>
-    <xacro:property name="rocker_link2_z"            value=".000"/>
-    <xacro:property name="rocker_link2_offset_x"    value="${-rocker_link2_length/2}"/>
-    <xacro:property name="rocker_link2_offset_y"    value=".000"/>
-    <xacro:property name="rocker_link2_offset_z"    value=".000"/>
-    <xacro:property name="rocker_link2_pitch"        value="1.28"/>
+    <xacro:property name="rocker_link_2_length"      value=".250"/>
+    <xacro:property name="rocker_link_2_width"       value=".040"/>
+    <xacro:property name="rocker_link_2_height"      value=".050"/>
+    <xacro:property name="rocker_link_2_x"            value="${-rocker_link_1_length/2+rocker_link_1_offset_x}"/>
+    <xacro:property name="rocker_link_2_y"            value=".000"/>
+    <xacro:property name="rocker_link_2_z"            value=".000"/>
+    <xacro:property name="rocker_link_2_offset_x"    value="${-rocker_link_2_length/2}"/>
+    <xacro:property name="rocker_link_2_offset_y"    value=".000"/>
+    <xacro:property name="rocker_link_2_offset_z"    value=".000"/>
+    <xacro:property name="rocker_link_2_pitch"        value="1.28"/>
 
-    <xacro:property name="rocker_link3_length"      value=".190"/>
-    <xacro:property name="rocker_link3_width"       value=".040"/>
-    <xacro:property name="rocker_link3_height"      value=".050"/>
-    <xacro:property name="rocker_link3_x"            value="${rocker_link1_length/2+rocker_link1_offset_x}"/>
-    <xacro:property name="rocker_link3_y"            value=".000"/>
-    <xacro:property name="rocker_link3_z"            value=".000"/>
-    <xacro:property name="rocker_link3_offset_x"    value="${rocker_link3_length/2}"/>
-    <xacro:property name="rocker_link3_offset_y"    value=".000"/>
-    <xacro:property name="rocker_link3_offset_z"    value=".000"/>
-    <xacro:property name="rocker_link3_pitch"        value="-1.31"/>
+    <xacro:property name="rocker_link_3_length"      value=".190"/>
+    <xacro:property name="rocker_link_3_width"       value=".040"/>
+    <xacro:property name="rocker_link_3_height"      value=".050"/>
+    <xacro:property name="rocker_link_3_x"            value="${rocker_link_1_length/2+rocker_link_1_offset_x}"/>
+    <xacro:property name="rocker_link_3_y"            value=".000"/>
+    <xacro:property name="rocker_link_3_z"            value=".000"/>
+    <xacro:property name="rocker_link_3_offset_x"    value="${rocker_link_3_length/2}"/>
+    <xacro:property name="rocker_link_3_offset_y"    value=".000"/>
+    <xacro:property name="rocker_link_3_offset_z"    value=".000"/>
+    <xacro:property name="rocker_link_3_pitch"        value="-1.31"/>
 
     <xacro:property name="link_diff_lenght" value=".100"/>
     <xacro:property name="link_diff_radius" value=".005"/>
@@ -51,17 +51,17 @@
 
         <xacro:rocker_bearing name="${name}_bearing" parent="${parent}" x="${x}" y="${y}" z="${z}" side="${side}"/>
 
-        <!-- <xacro:rocker_link1 name="${name}_link1" parent="${name}_bearing"
-            x="${rocker_link1_x}" y="${-rocker_link1_y}"  z="${rocker_link1_z}"
-            pitch="${-rocker_link1_pitch}"/>
+        <!-- <xacro:rocker_link_1 name="${name}_link_1" parent="${name}_bearing"
+            x="${rocker_link_1_x}" y="${-rocker_link_1_y}"  z="${rocker_link_1_z}"
+            pitch="${-rocker_link_1_pitch}"/>
 
-        <xacro:rocker_link2 name="${name}_link2" parent="${name}_link1"
-            x="${rocker_link2_x}" y="${-rocker_link2_y}"  z="${rocker_link2_z}"
-            pitch="${-rocker_link2_pitch}"/>
+        <xacro:rocker_link_2 name="${name}_link_2" parent="${name}_link_1"
+            x="${rocker_link_2_x}" y="${-rocker_link_2_y}"  z="${rocker_link_2_z}"
+            pitch="${-rocker_link_2_pitch}"/>
 
-        <xacro:rocker_link3 name="${name}_link3" parent="${name}_link1"
-            x="${rocker_link3_x}" y="${-rocker_link3_y}"  z="${rocker_link3_z}"
-            pitch="${-rocker_link3_pitch}"/> -->
+        <xacro:rocker_link_3 name="${name}_link_3" parent="${name}_link_1"
+            x="${rocker_link_3_x}" y="${-rocker_link_3_y}"  z="${rocker_link_3_z}"
+            pitch="${-rocker_link_3_pitch}"/> -->
 
     </xacro:macro>
 </robot>

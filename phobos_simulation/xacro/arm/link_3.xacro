@@ -1,34 +1,34 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link3">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link_3">
 
 <!-- GEOMETRY -->
-    <xacro:macro name="link3_geometry">
-        <origin rpy="0 0 0" xyz="${link3_length/2} 0 0" />
+    <xacro:macro name="link_3_geometry">
+        <origin rpy="0 0 0" xyz="${link_3_length/2} 0 0" />
         <geometry>
-            <box size="${link3_length} ${link3_width} ${link3_height}"/>
+            <box size="${link_3_length} ${link_3_width} ${link_3_height}"/>
         </geometry>
     </xacro:macro>
 
 <!-- MATERIAL -->
-    <xacro:macro name="link3_material">
-        <material name="link3_color">
+    <xacro:macro name="link_3_material">
+        <material name="link_3_color">
             <color rgba=".4 .4 .8 1"/>
         </material>
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="link3" params="name parent x y z">
+    <xacro:macro name="link_3" params="name parent x y z">
 
         <link name="${name}">
             <visual>
-                <xacro:link3_geometry/>
-                <xacro:link3_material/>
+                <xacro:link_3_geometry/>
+                <xacro:link_3_material/>
             </visual>
             <collision>
-                <xacro:link3_geometry/>
+                <xacro:link_3_geometry/>
             </collision>
             <inertial>
-                <origin rpy="0 0 0" xyz="${link3_length/2} 0 ${link3_height/2}" />
+                <origin rpy="0 0 0" xyz="${link_3_length/2} 0 ${link_3_height/2}" />
                 <mass value="1"/>
                 <inertia ixx=".003" ixy="0.000" ixz="0.000" iyy=".003" iyz="0.000" izz=".003"/>
             </inertial>

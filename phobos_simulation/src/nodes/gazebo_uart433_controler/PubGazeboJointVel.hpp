@@ -15,11 +15,11 @@ public:
     PubGazeboJointVel(ros::NodeHandle *nh){
         this->nh = nh;
 
-        pub_joint[0] = nh->advertise<std_msgs::Float64>("/rover/link0_velocity_controller/command", 100);
-        pub_joint[1] = nh->advertise<std_msgs::Float64>("/rover/link1_velocity_controller/command", 100);
-        pub_joint[2] = nh->advertise<std_msgs::Float64>("/rover/link2_velocity_controller/command", 100);
-        pub_joint[3] = nh->advertise<std_msgs::Float64>("/rover/link3_velocity_controller/command", 100);
-        pub_joint[4] = nh->advertise<std_msgs::Float64>("/rover/link4_velocity_controller/command", 100);
+        pub_joint[0] = nh->advertise<std_msgs::Float64>("/rover/link_0_velocity_controller/command", 100);
+        pub_joint[1] = nh->advertise<std_msgs::Float64>("/rover/link_1_velocity_controller/command", 100);
+        pub_joint[2] = nh->advertise<std_msgs::Float64>("/rover/link_2_velocity_controller/command", 100);
+        pub_joint[3] = nh->advertise<std_msgs::Float64>("/rover/link_3_velocity_controller/command", 100);
+        pub_joint[4] = nh->advertise<std_msgs::Float64>("/rover/link_4_velocity_controller/command", 100);
 
         pub_joint[5] = nh->advertise<std_msgs::Float64>("/rover/finger1_velocity_controller/command", 100);
         pub_joint[6] = nh->advertise<std_msgs::Float64>("/rover/finger2_velocity_controller/command", 100);

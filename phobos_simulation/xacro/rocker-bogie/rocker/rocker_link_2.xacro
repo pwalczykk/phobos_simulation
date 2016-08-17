@@ -1,33 +1,33 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rocker_link2">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rocker_link_2">
 
 <!-- GEOMETRY -->
-    <xacro:macro name="rocker_link2_geometry">
-        <origin rpy="0 0 0" xyz="${rocker_link2_offset_x} ${rocker_link2_offset_y} ${rocker_link2_offset_z} " />
+    <xacro:macro name="rocker_link_2_geometry">
+        <origin rpy="0 0 0" xyz="${rocker_link_2_offset_x} ${rocker_link_2_offset_y} ${rocker_link_2_offset_z} " />
         <geometry>
-            <box size="${rocker_link2_length} ${rocker_link2_width} ${rocker_link2_height}"/>
+            <box size="${rocker_link_2_length} ${rocker_link_2_width} ${rocker_link_2_height}"/>
         </geometry>
     </xacro:macro>
 
 <!-- MATERIAL -->
-    <xacro:macro name="rocker_link2_material">
+    <xacro:macro name="rocker_link_2_material">
         <material name="light_blue">
             <color rgba=".3 .3 .6 1"/>
         </material>
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="rocker_link2" params="name parent x y z pitch">
+    <xacro:macro name="rocker_link_2" params="name parent x y z pitch">
         <link name="${name}">
             <visual>
-                <xacro:rocker_link2_geometry/>
-                <xacro:rocker_link2_material/>
+                <xacro:rocker_link_2_geometry/>
+                <xacro:rocker_link_2_material/>
             </visual>x
             <collision>
-                <xacro:rocker_link2_geometry/>
+                <xacro:rocker_link_2_geometry/>
             </collision>
             <inertial>
-                 <origin rpy="0 0 0" xyz="${rocker_link2_offset_x} ${rocker_link2_offset_y} ${rocker_link2_offset_z}" />
+                 <origin rpy="0 0 0" xyz="${rocker_link_2_offset_x} ${rocker_link_2_offset_y} ${rocker_link_2_offset_z}" />
                  <mass value="0"/>
                  <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
             </inertial>

@@ -8,11 +8,11 @@
         respawn="false"
         output="screen"
         ns="rover"
-        args="link0_velocity_controller
-              link1_velocity_controller
-              link2_velocity_controller
-              link3_velocity_controller
-              link4_velocity_controller
+        args="link_0_velocity_controller
+              link_1_velocity_controller
+              link_2_velocity_controller
+              link_3_velocity_controller
+              link_4_velocity_controller
               finger1_velocity_controller
               finger2_velocity_controller
               tower_yaw_velocity_controller
@@ -36,39 +36,39 @@
     <include file="$(find rover_keyboard_teleop)/launch/keyboard_teleop.launch"/>
 
     <!--node
-        name="link0_controller_server"
+        name="link_0_controller_server"
         pkg="rover_simulation"
         type="controller_server"
         output="screen"
-        args="0 0 0 /rover/link0_velocity_controller"
+        args="0 0 0 /rover/link_0_velocity_controller"
     />
 
     <node
-        name="link1_controller_server"
+        name="link_1_controller_server"
         pkg="rover_simulation"
         type="controller_server"
         output="screen"
-        args="0 0 0 /rover/link1_velocity_controller"
+        args="0 0 0 /rover/link_1_velocity_controller"
     />
 
     <node
-        name="link2_controller_server"
+        name="link_2_controller_server"
         pkg="rover_simulation"
         type="controller_server"
         output="screen"
-        args="0 0 0  /rover/link2_velocity_controller"
+        args="0 0 0  /rover/link_2_velocity_controller"
     />
 
     <node
-        name="link3_controller_server"
+        name="link_3_controller_server"
         pkg="rover_simulation"
         type="controller_server"
         output="screen"
-        args="0 0 0  /rover/link3_velocity_controller"
+        args="0 0 0  /rover/link_3_velocity_controller"
     />
 
     <node
-        name="link4_controller_server"
+        name="link_4_controller_server"
         pkg="rover_simulation"
         type="controller_server"
         output="screen"

@@ -1,48 +1,48 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link0">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link_0">
 
 <!-- GEOMETRY 1 -->
-    <xacro:macro name="link0_geometry1">
+    <xacro:macro name="link_0_geometry1">
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-            <cylinder length="${link0_length1}" radius="${link0_radius1}"/>
+            <cylinder length="${link_0_length1}" radius="${link_0_radius1}"/>
         </geometry>
     </xacro:macro>
 
 <!-- GEOMETRY 2 -->
-    <xacro:macro name="link0_geometry2">
-        <origin rpy="1.57075 0 0" xyz="0 0 ${link0_length1/2}"/>
+    <xacro:macro name="link_0_geometry2">
+        <origin rpy="1.57075 0 0" xyz="0 0 ${link_0_length1/2}"/>
         <geometry>
-            <cylinder length="${link0_length2}" radius="${link0_radius2}"/>
+            <cylinder length="${link_0_length2}" radius="${link_0_radius2}"/>
         </geometry>
     </xacro:macro>
 
 <!-- MATERIAL -->
-    <xacro:macro name="link0_material">
+    <xacro:macro name="link_0_material">
         <material name="blue">
             <color rgba=".2 .2 .5 1"/>
         </material>
     </xacro:macro>
 
 <!-- LINK -->
-    <xacro:macro name="link0" params="name parent x y z">
+    <xacro:macro name="link_0" params="name parent x y z">
 
 <!-- LINK -->
         <link name="${name}">
             <visual>
-                <xacro:link0_geometry1/>
-                <xacro:link0_material/>
+                <xacro:link_0_geometry1/>
+                <xacro:link_0_material/>
             </visual>
             <visual>
-                <xacro:link0_geometry2/>
-                <xacro:link0_material/>
+                <xacro:link_0_geometry2/>
+                <xacro:link_0_material/>
             </visual>
 
             <collision>
-                <xacro:link0_geometry1/>
+                <xacro:link_0_geometry1/>
             </collision>
             <collision>
-                <xacro:link0_geometry2/>
+                <xacro:link_0_geometry2/>
             </collision>
             <inertial>
                  <mass value="1"/>

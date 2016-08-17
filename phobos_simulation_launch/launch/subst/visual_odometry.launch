@@ -1,0 +1,27 @@
+<launch>
+  <!-- Run the stereo image proc -->
+  <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" output="screen" ns="/rover">
+      <param name="~approximate_sync" value="True"/>
+
+      <remap from="/rover/left/image_raw" to="/rover/camera1/image_raw" />
+      <remap from="/rover/left/camera_info" to="/rover/camera1/camera_info" />
+
+      <remap from="/rover/right/image_raw" to="/rover/camera2/image_raw" />
+      <remap from="/rover/right/camera_info" to="/rover/camera2/camera_info"/>
+  </node>
+
+  <!-- Viso2 -->
+  <node pkg="viso2_ros" type="stereo_odometer" name="visual_odometry" ns="/rover">
+
+      <remap from="/rover/stereo/left/rover/image" to="/rover/camera1/image_raw" />
+      <remap from="/rover/stereo/left/camera_info" to="/rover/camera1/camera_info" />
+
+      <remap from="/rover/stereo/right/rover/image" to="/rover/camera2/image_raw" />
+      <remap from="/rover/stereo/right/camera_info" to="/rover/camera2/camera_info"/>
+
+    <param name="base_link_frame_id" value="/base_link"/>
+    <!-- <param name="sensor_frame_id" value="/camera1"/> -->
+
+  </node>
+
+</launch>

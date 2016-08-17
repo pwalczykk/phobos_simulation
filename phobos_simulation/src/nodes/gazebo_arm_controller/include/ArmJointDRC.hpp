@@ -21,11 +21,11 @@ public:
 
     void DRCallback(phobos_simulation::ArmJointDRCConfig &config, uint32_t level)
     {
-        ArmJointsController::pid[0].Set(config.link0_Kp, config.link0_Ki, config.link0_Kd);
-        ArmJointsController::pid[1].Set(config.link1_Kp, config.link1_Ki, config.link1_Kd);
-        ArmJointsController::pid[2].Set(config.link2_Kp, config.link2_Ki, config.link2_Kd);
-        ArmJointsController::pid[3].Set(config.link3_Kp, config.link3_Ki, config.link3_Kd);
-        ArmJointsController::pid[4].Set(config.link4_Kp, config.link4_Ki, config.link4_Kd);
+        ArmJointsController::pid[0].Set(config.link_0_Kp, config.link_0_Ki, config.link_0_Kd);
+        ArmJointsController::pid[1].Set(config.link_1_Kp, config.link_1_Ki, config.link_1_Kd);
+        ArmJointsController::pid[2].Set(config.link_2_Kp, config.link_2_Ki, config.link_2_Kd);
+        ArmJointsController::pid[3].Set(config.link_3_Kp, config.link_3_Ki, config.link_3_Kd);
+        ArmJointsController::pid[4].Set(config.link_4_Kp, config.link_4_Ki, config.link_4_Kd);
         ArmJointsController::pid[5].Set(config.finger_Kp, config.finger_Ki, config.finger_Kd);
         ArmJointsController::pid[6].Set(config.finger_Kp, config.finger_Ki, config.finger_Kd);
     }

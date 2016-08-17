@@ -8,6 +8,6 @@ Usage:
 <gazebo>
     <plugin name="pid_controller_2" filename="libControllerPlugin.so">
         <joint>rwheel_joint</joint>
-        <topic>/rover/link1_velocity_controller</topic>
+        <topic>/rover/link_1_velocity_controller</topic>
     </plugin>
 </gazebo>

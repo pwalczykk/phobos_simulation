@@ -4,15 +4,15 @@
 #include "../include/KeyDefinitions.hpp"
 
 KeyListener key_listener;
-PublisherFloat64 link0, link1, link2, link3, link4, finger1, finger2, tower_yaw, tower_pitch;
+PublisherFloat64 link_0, link_1, link_2, link_3, link_4, finger1, finger2, tower_yaw, tower_pitch;
 PublisherFloat64 wheel_fl, wheel_fr, wheel_ml, wheel_mr, wheel_bl, wheel_br;
 PublisherTwist cmd_vel;
 
-double link0_vel = 1.0;
-double link1_vel = 1.0;
-double link2_vel = 1.0;
-double link3_vel = 1.0;
-double link4_vel = 1.0;
+double link_0_vel = 1.0;
+double link_1_vel = 1.0;
+double link_2_vel = 1.0;
+double link_3_vel = 1.0;
+double link_4_vel = 1.0;
 double grip_vel = 1.0;
 double tower_yaw_vel = 1.0;
 double tower_pitch_vel = 1.0;
@@ -29,11 +29,11 @@ int main(int argc, char** argv)
 
     key_listener.Init(&nh);
 
-    link0.Init("/rover/link0_velocity_controller/command", &nh);
-    link1.Init("/rover/link1_velocity_controller/command", &nh);
-    link2.Init("/rover/link2_velocity_controller/command", &nh);
-    link3.Init("/rover/link3_velocity_controller/command", &nh);
-    link4.Init("/rover/link4_velocity_controller/command", &nh);
+    link_0.Init("/rover/link_0_velocity_controller/command", &nh);
+    link_1.Init("/rover/link_1_velocity_controller/command", &nh);
+    link_2.Init("/rover/link_2_velocity_controller/command", &nh);
+    link_3.Init("/rover/link_3_velocity_controller/command", &nh);
+    link_4.Init("/rover/link_4_velocity_controller/command", &nh);
     finger1.Init("/rover/finger1_velocity_controller/command", &nh);
     finger2.Init("/rover/finger2_velocity_controller/command", &nh);
 
@@ -78,20 +78,20 @@ void KeyDownCallback()
 {
     switch(key_listener.ReturnKey())
     {
-        case Q: link0.Publish(link0_vel); break;
-        case A: link0.Publish(-link0_vel); break;
+        case Q: link_0.Publish(link_0_vel); break;
+        case A: link_0.Publish(-link_0_vel); break;
 
-        case W: link1.Publish(link1_vel); break;
-        case S: link1.Publish(-link1_vel); break;
+        case W: link_1.Publish(link_1_vel); break;
+        case S: link_1.Publish(-link_1_vel); break;
 
-        case E: link2.Publish(link2_vel); break;
-        case D: link2.Publish(-link2_vel); break;
+        case E: link_2.Publish(link_2_vel); break;
+        case D: link_2.Publish(-link_2_vel); break;
 
-        case R: link3.Publish(link3_vel); break;
-        case F: link3.Publish(-link3_vel); break;
+        case R: link_3.Publish(link_3_vel); break;
+        case F: link_3.Publish(-link_3_vel); break;
 
-        case T: link4.Publish(link4_vel); break;
-        case G: link4.Publish(-link4_vel); break;
+        case T: link_4.Publish(link_4_vel); break;
+        case G: link_4.Publish(-link_4_vel); break;
 
         case Y: GripVel(grip_vel); break;
         case H: GripVel(-grip_vel); break;
@@ -121,11 +121,11 @@ void KeyUpCallback()
 {
     switch(key_listener.ReturnKey())
     {
-        case Q: case A: link0.Publish(0); break;
-        case W: case S: link1.Publish(0); break;
-        case E: case D: link2.Publish(0); break;
-        case R: case F: link3.Publish(0); break;
-        case T: case G: link4.Publish(0); break;
+        case Q: case A: link_0.Publish(0); break;
+        case W: case S: link_1.Publish(0); break;
+        case E: case D: link_2.Publish(0); break;
+        case R: case F: link_3.Publish(0); break;
+        case T: case G: link_4.Publish(0); break;
         case Y: case H: GripVel(0); break;
 
         case I: case K: tower_yaw.Publish(0); break;
