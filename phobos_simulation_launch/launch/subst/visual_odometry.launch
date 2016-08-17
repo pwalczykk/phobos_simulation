@@ -19,6 +19,11 @@
       <remap from="/rover/stereo/right/rover/image" to="/rover/camera2/image_raw" />
       <remap from="/rover/stereo/right/camera_info" to="/rover/camera2/camera_info"/>
 
+      <remap from="/rover/visual_odometry/odometry"     to="/rover/localization/vo"/>
+      <remap from="/rover/visual_odometry/pose"         to="/rover/localization/vo/pose"/>
+      <remap from="/rover/visual_odometry/point_cloud"  to="/rover/localization/vo/point_cloud"/>
+      <remap from="/rover/visual_odometry/info"         to="/rover/localization/vo/info"/>
+
     <param name="base_link_frame_id" value="/base_link"/>
     <!-- <param name="sensor_frame_id" value="/camera1"/> -->
 
