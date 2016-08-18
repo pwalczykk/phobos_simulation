@@ -1,0 +1,14 @@
+<launch>
+    <!-- COMMUNICATION -->
+    <!-- <node name="uart_433_control_transceiver" pkg="phobos_control_station" type="uart_433_control_transceiver" ns="/control"/> -->
+
+    <!-- TELEOPERATION -->
+    <node name="keyboard" pkg="keyboard" type="keyboard" ns="/control"/>
+
+    <!-- VISUALIZATION -->
+    <node name="pub_traveled_path" pkg="phobos_control_station" type="pub_traveled_path" ns="/control"/>
+
+    <!-- <node name="rviz" type="rviz" pkg="rviz" ns="/control"/> -->
+
+
+</launch>

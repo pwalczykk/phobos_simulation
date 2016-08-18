@@ -1,6 +1,108 @@
 <launch>
-    <include file="$(find phobos_simulation_launch)/launch/subst/localization.launch"/>
-    <include file="$(find phobos_simulation_launch)/launch/subst/stereovision.launch"/>
-    <include file="$(find phobos_simulation_launch)/launch/subst/video_stream.launch"/>
-    <include file="$(find phobos_simulation_launch)/launch/subst/gazebo433_uart.launch"/>
+
+<!-- COMMUNICATION -->
+    <node name="gazebo_motor_transceiver"   pkg="phobos_simulation"         type="gazebo_motor_transceiver"     ns="/rover"/>
+
+    <node name="gazebo_imu_handler"         pkg="phobos_simulation"         type="gazebo_imu_handler"           ns="/rover"/>
+
+    <node name="uart_433_simulation_bridge" pkg="phobos_simulation"         type="uart_433_simulation_bridge"   ns="/rover"/>
+
+<!-- LOCALIZATIOIN -->
+    <node name="wheels_odometry_3d"         pkg="phobos_rover_localization" type="wheels_odometry_3d"           ns="/rover">
+        <param name="/wheel_circumference"  value="1.0"/>
+        <param name="/wheels_spacing"       value="1.0"/>
+        <param name="/impulses_per_rotation" value="1000"/>
+    </node>
+
+    <node name="ekf_localization_node"      pkg="robot_localization"        type="ekf_localization_node"       ns="/rover"  clear_params="true"     output="screen">
+        <remap from="/rover/odometry/filtered" to="/rover/localization/odom_ekf"/>
+
+        <param name="frequency" value="10"/>
+        <param name="sensor_timeout" value="0.3"/>
+        <param name="two_d_mode" value="false"/>
+
+        <param name="odom_frame" value="odom"/>
+        <param name="base_link_frame" value="base_link"/>
+        <param name="world_frame" value="odom"/>
+
+        <param name="transform_time_offset" value="0.0"/>
+
+        <param name="odom0" value="/rover/localization/vo"/>
+        <rosparam param="odom0_config">[ true,  true,  true,
+                                         true,  true,  true,
+                                         true,  true,  true,
+                                         true,  true,  true,
+                                        false, false, false]</rosparam>
+        <param name="odom0_differential" value="false"/>
+        <param name="odom0_relative" value="false"/>
+
+        <param name="odom1" value="/rover/localization/wo"/>
+        <rosparam param="odom1_config">[ true,  true,  true,
+                                        false, false, false,
+                                        false, false, false,
+                                        false, false, false,
+                                        false, false, false]</rosparam>
+        <param name="odom1_differential" value="false"/>
+        <param name="odom1_relative" value="false"/>
+
+        <param name="imu0" value="/rover/localization/imu"/>
+        <rosparam param="imu0_config">[ false, false, false,
+                                        true,  true,  true,
+                                        false, false, false,
+                                        true,  true,  true,
+                                        true,  true,  true]</rosparam>
+        <param name="imu0_differential" value="false"/>
+        <param name="imu0_relative" value="false"/>
+        <param name="imu0_remove_gravitational_acceleration" value="false"/>
+
+        <param name="print_diagnostics" value="true"/>
+    </node>
+
+
+<!-- VISION -->
+
+    <node name="web_video_server"       pkg="web_video_server"      type="web_video_server" ns="/rover" output="screen"/>
+
+    <node name="camera1_tf_broadcaster" pkg="phobos_rover_vision" type="tf_broadcaster" ns="/rover">
+        <param name="parent_link" value="base_link"/>
+        <param name="child_link" value="camera1_lens"/>
+        <param name="pose_x" value =" 0.265"/>
+        <param name="pose_y" value =" 0.035"/>
+        <param name="pose_z" value ="-0.070"/>
+        <param name="orient_x" value ="-0.5"/>
+        <param name="orient_y" value =" 0.5"/>
+        <param name="orient_z" value ="-0.5"/>
+        <param name="orient_w" value =" 0.5"/>
+    </node>
+
+    <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" output="screen" ns="/rover">
+        <param name="~approximate_sync" value="True"/>
+        <param name="~queue_size" value="10"/>
+
+        <remap from="/rover/left/image_raw"     to="/rover/camera1/image_raw" />
+        <remap from="/rover/left/camera_info"   to="/rover/camera1/camera_info" />
+
+        <remap from="/rover/right/image_raw"    to="/rover/camera2/image_raw" />
+        <remap from="/rover/right/camera_info"  to="/rover/camera2/camera_info"/>
+    </node>
+
+    <node name="visual_odometry" pkg="viso2_ros" type="stereo_odometer" output="screen" ns="/rover">
+        <remap from="/rover/stereo/left/rover/image"        to="/rover/camera1/image_raw" />
+        <remap from="/rover/stereo/left/camera_info"        to="/rover/camera1/camera_info" />
+
+        <remap from="/rover/stereo/right/rover/image"       to="/rover/camera2/image_raw" />
+        <remap from="/rover/stereo/right/camera_info"       to="/rover/camera2/camera_info"/>
+
+        <remap from="/rover/visual_odometry/odometry"       to="/rover/localization/vo"/>
+        <remap from="/rover/visual_odometry/pose"           to="/rover/localization/vo/pose"/>
+        <remap from="/rover/visual_odometry/point_cloud"    to="/rover/localization/vo/point_cloud"/>
+        <remap from="/rover/visual_odometry/info"           to="/rover/localization/vo/info"/>
+
+        <param name="base_link_frame_id" value="base_link"/>
+        <param name="sensor_frame_id" value="camera1_lens"/>
+        <param name="odom_frame_id" value="odom"/>
+
+        <param name="publish_tf" value="false"/>
+    </node>
+
 </launch>

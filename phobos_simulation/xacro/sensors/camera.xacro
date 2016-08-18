@@ -40,7 +40,7 @@
     </xacro:macro>
 
 <!-- CAMERA GAZEBO PLUGIN -->
-    <xacro:macro name="camera_plugin" params="name width height">
+    <xacro:macro name="camera_plugin" params="name">
         <gazebo reference="${name}">
             <sensor type="camera" name="${name}">
                 <update_rate> 10.0 </update_rate>
@@ -48,8 +48,8 @@
                     <!-- <horizontal_fov>1.3962634</horizontal_fov> -->
                     <horizontal_fov>2</horizontal_fov>
                     <image>
-                        <width>${width}</width>
-                        <height>${height}</height>
+                        <width>320</width>
+                        <height>240</height>
                         <format>B8G8R8</format>
                     </image>
                     <clip>
@@ -145,7 +145,7 @@
             <selfCollide> false </selfCollide>
         </gazebo>
 
-        <xacro:camera_plugin name="${name}" width="320" height="240"/>
+        <xacro:camera_plugin name="${name}"/>
 
     </xacro:macro>
 </robot>

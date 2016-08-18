@@ -23,7 +23,7 @@ public:
     }
 
     void Update(){
-        if(!service_client.call(msg_link_state)) ROS_ERROR("Unable to get link state: GPS");
+        if(!service_client.call(msg_link_state)) ROS_ERROR("Unable to get link state: IMU");
 
         // double x = msg_link_state.response.link_state.pose.position.x;
         // double y = msg_link_state.response.link_state.pose.position.y;

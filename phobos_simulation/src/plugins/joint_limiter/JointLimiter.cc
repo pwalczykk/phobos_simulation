@@ -17,7 +17,7 @@ void JointLimiter::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
         topic_name = _sdf->GetElement("topic")->GetValue()->GetAsString();
 
         std::stringstream ss;
-        ss << topic_name << "/command";
+        ss << topic_name;
         topic_name = ss.str();
     }
     {   // LIMITY
@@ -70,7 +70,7 @@ void JointLimiter::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
 
 void JointLimiter::OnRosMsg(const std_msgs::Float64ConstPtr &_msg)
 {
-    if(_msg->data == 0)
+    if(-0.02 < _msg->data && _msg->data < 0.02)
     {
         current_position = joint->GetAngle(0);
         joint->SetHighStop(0, *current_position);

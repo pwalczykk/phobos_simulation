@@ -34,7 +34,7 @@ void ControllerPlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     std::string         topic_vel_curr, topic_vel_req, topic_pose_curr, topic_Kp, topic_Ki, topic_Kd;
     std::stringstream   ss_vel_curr,    ss_vel_req,    ss_pose_curr,    ss_Kp,    ss_Ki,    ss_Kd;
 
-    ss_vel_req << topic << "/command"; topic_vel_req = ss_vel_req.str();
+    ss_vel_req << topic; topic_vel_req = ss_vel_req.str();
     ss_vel_curr << topic << "/vel_curr"; topic_vel_curr = ss_vel_curr.str();
     ss_pose_curr << topic << "/pose"; topic_pose_curr = ss_pose_curr.str();
     ss_Kp << topic << "/Kp"; topic_Kp = ss_Kp.str();
