@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     ros::NodeHandle nh;
     ros::Rate loop_rate(RATE);
 
-    GzIMU __imu("base_link", "/rover/sensors/imu");
+    GzIMU __imu("base_link", "/rover/localization/imu");
     GzTF __tf(&__imu);
 
     PubAccMagnitude("/rover/security/acceleration_magniotude", &nh, &__imu);
