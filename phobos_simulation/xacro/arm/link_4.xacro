@@ -70,7 +70,7 @@
                 <lower>-3.14</lower>
                 <upper>3.14</upper>
                 <absolute>1</absolute>
-                <resolution>3600</resolution>
+                <resolution>10000</resolution>
             </plugin>
         </gazebo>
         <gazebo>

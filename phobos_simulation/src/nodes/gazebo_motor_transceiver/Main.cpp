@@ -59,10 +59,10 @@ int main(int argc, char** argv){
     SubEncoder <std_msgs::Int16>sub_encoder_finger_l("/simulation/encoder/abs/finger_l", &nh);
     SubEncoder <std_msgs::Int16>sub_encoder_finger_r("/simulation/encoder/abs/finger_r", &nh);
 
-    SubEncoder <std_msgs::Int16>sub_encoder_rocker_l("/simulation/encoder/abs/rocker_l", &nh);
-    SubEncoder <std_msgs::Int16>sub_encoder_rocker_r("/simulation/encoder/abs/rocker_r", &nh);
-    SubEncoder <std_msgs::Int16>sub_encoder_bogie_l("/simulation/encoder/abs/bogie_l", &nh);
-    SubEncoder <std_msgs::Int16>sub_encoder_bogie_r("/simulation/encoder/abs/bogie_r", &nh);
+    SubEncoder <std_msgs::Int16>sub_encoder_rocker_l("/simulation/encoder/abs/rocker_l_bearing", &nh);
+    SubEncoder <std_msgs::Int16>sub_encoder_rocker_r("/simulation/encoder/abs/rocker_r_bearing", &nh);
+    SubEncoder <std_msgs::Int16>sub_encoder_bogie_l("/simulation/encoder/abs/bogie_l_bearing", &nh);
+    SubEncoder <std_msgs::Int16>sub_encoder_bogie_r("/simulation/encoder/abs/bogie_r_bearing", &nh);
 
     ros::Rate loop_rate(10);
 
@@ -98,6 +98,8 @@ int main(int argc, char** argv){
             pub_encoder_arm.msg.link_pose_2 = sub_encoder_link_2.msg.data;
             pub_encoder_arm.msg.link_pose_3 = sub_encoder_link_3.msg.data;
             pub_encoder_arm.msg.link_pose_4 = sub_encoder_link_4.msg.data;
+            pub_encoder_arm.msg.grip_pose = sub_encoder_finger_l.msg.data;
+
         pub_encoder_arm.Publish();
 
             pub_encoder_rocker_bogie.msg.rocker_pose_l = sub_encoder_rocker_l.msg.data;

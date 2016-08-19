@@ -55,6 +55,17 @@
                 <dynamics damping="2" friction="0"/>
             </joint>
 
+            <gazebo>
+                <plugin name="joint_encoder_${name}" filename="libJointEncoder.so">
+                    <joint>${name}_joint</joint>
+                    <topic>/simulation/encoder/abs/${name}</topic>
+                    <lower>-0.5</lower>
+                    <upper>0.5</upper>
+                    <absolute>1</absolute>
+                    <resolution>10000</resolution>
+                </plugin>
+            </gazebo>
+
             <gazebo reference="${name}_joint">
                 <provideFeedback value="true"/>
             </gazebo>

@@ -91,7 +91,7 @@
             <child link="${name}"/>
             <origin rpy="0 0 0" xyz="${x} ${y} ${z}"/>
             <axis xyz="0 ${side*1} 0"/>
-            <limit effort="100" velocity="1" lower="0" upper="${link_4_width/2 - finger_width}"/>
+            <limit effort="10000" velocity="1" lower="0" upper="${link_4_width/2 - finger_width}"/>
             <dynamics damping=".1"/>
         </joint>
         <!--gazebo reference="${name}_joint">
@@ -110,11 +110,31 @@
             </plugin>
         </gazebo>
         <gazebo>
+            <plugin name="joint_encoder_${name}" filename="libJointEncoder.so">
+                <joint>${name}_joint</joint>
+                <topic>/simulation/encoder/abs/${name}</topic>
+                <lower>0</lower>
+                <upper>${link_4_width/2 - finger_width}</upper>
+                <absolute>1</absolute>
+                <resolution>10000</resolution>
+            </plugin>
+        </gazebo>
+        <gazebo>
+            <plugin name="joint_encoder_${name}" filename="libJointEncoder.so">
+                <joint>${name}_joint</joint>
+                <topic>/simulation/encoder/abs/${name}</topic>
+                <lower>0</lower>
+                <upper>${link_4_width/2 - finger_width}</upper>
+                <absolute>1</absolute>
+                <resolution>10000</resolution>
+            </plugin>
+        </gazebo>
+        <gazebo>
             <plugin name="joint_controller${name}" filename="libControllerPID.so">
                 <joint>${name}_joint</joint>
                 <topic>/simulation/controller/vel/${name}</topic>
-                <Kp>10</Kp>
-                <Ki>0</Ki>
+                <Kp>20</Kp>
+                <Ki>2</Ki>
                 <Kd>5</Kd>
             </plugin>
         </gazebo>

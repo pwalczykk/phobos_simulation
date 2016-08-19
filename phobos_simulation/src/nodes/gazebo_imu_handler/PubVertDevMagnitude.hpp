@@ -18,7 +18,7 @@ public:
     PubVertDevMagnitude(std::string topic, ros::NodeHandle *nh, GzIMU* imu){
         this->nh = nh;
         this->imu = imu;
-        this->pub = nh->advertise<geometry_msgs::PoseStamped>(topic, 100);
+        this->pub = nh->advertise<std_msgs::Int16>(topic, 100);
     }
 
     void Publish(){

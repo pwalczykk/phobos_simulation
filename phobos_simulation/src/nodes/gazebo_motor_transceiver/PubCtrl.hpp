@@ -16,12 +16,12 @@ public:
         this->pub = nh->advertise<ros_Message>(topic, 100);
 
         // alfa = (max_val - min_val) / 4294967296; // Int32
-        // alfa = (max_val - min_val) / 65536; // Int16
-        // beta = (min_val + max_val) / 2; // Int16/32
+        alfa = (max_val - min_val) / 65536; // Int16
+        beta = (min_val + max_val) / 2; // Int16/32
 
-        alfa = (max_val - min_val) / 4096; // Sys64 - 2 chars
+        // alfa = (max_val - min_val) / 4096; // Sys64 - 2 chars
         // beta = (min_val + max_val) / 2 - (max_val - min_val) / 2;
-        beta = min_val;
+        // beta = min_val;
     }
 
     void MapAndPublish(int input){

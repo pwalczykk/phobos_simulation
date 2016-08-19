@@ -9,8 +9,8 @@
 
 <!-- LOCALIZATIOIN -->
     <node name="wheels_odometry_3d"         pkg="phobos_rover_localization" type="wheels_odometry_3d"           ns="/rover">
-        <param name="/wheel_circumference"  value="1.0"/>
-        <param name="/wheels_spacing"       value="1.0"/>
+        <param name="/wheel_circumference"  value="0.6283"/>
+        <param name="/wheels_spacing"       value="0.600"/>
         <param name="/impulses_per_rotation" value="1000"/>
     </node>
 
