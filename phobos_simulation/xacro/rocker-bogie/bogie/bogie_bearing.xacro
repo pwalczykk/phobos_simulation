@@ -9,6 +9,20 @@
         </geometry>
     </xacro:macro>
 
+<!-- VISUAL -->
+    <xacro:macro name="bogie_visual_left">
+        <origin xyz="-0.288 -.230 -0.21" rpy="1.57075 0 1.57075"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/bogie_lewe_stl.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+    <xacro:macro name="bogie_visual_right">
+        <origin xyz="-0.288 -.195 -0.21" rpy="1.57075 0 1.57075"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/bogie_prawe_stl.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+
 <!-- MATERIAL -->
     <xacro:macro name="bogie_bearing_material">
         <material name="dark_green">
@@ -19,10 +33,13 @@
 <!-- LINK -->
     <xacro:macro name="bogie_bearing" params="name parent x y z side">
         <link name="${name}">
+
             <visual>
-                <xacro:bogie_bearing_geometry/>
-                <xacro:bogie_bearing_material/>
+                <xacro:if value="${side == 1}"> <xacro:bogie_visual_left/> </xacro:if>
+                <xacro:if value="${side == -1}"> <xacro:bogie_visual_right/> </xacro:if>
+                <xacro:rocker_material/>
             </visual>
+
             <collision>
                 <xacro:bogie_bearing_geometry/>
             </collision>

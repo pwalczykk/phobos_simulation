@@ -1,5 +1,5 @@
 <launch>
-    <arg name="model" default="$(find rover_simulation)/xacro/rover.xacro"/>
+    <arg name="model" default="$(find phobos_simulation)/xacro/rover.xacro"/>
     <arg name="gui" default="True" />
     <arg name="rvizconfig" default="$(find urdf_tutorial)/urdf.rviz" />
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />

@@ -1,0 +1,6 @@
+<package>
+  <description brief="robot1">robot1</description>
+  <depend package="gazebo" />
+  <author>me</author>
+  <license>BSD</license>
+</package>

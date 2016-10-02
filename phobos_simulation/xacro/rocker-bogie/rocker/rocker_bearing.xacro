@@ -9,6 +9,20 @@
         </geometry>
     </xacro:macro>
 
+<!-- VISUAL -->
+    <xacro:macro name="rocker_visual_left">
+        <origin xyz="-0.14 -.775 -0.16" rpy="1.57075 0 3.1416"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/rocker_lewy_stl.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+    <xacro:macro name="rocker_visual_right">
+        <origin xyz="-0.14 -.739 -0.16" rpy="1.57075 0 3.1416"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/rocker_prawy_stl.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+
 <!-- MATERIAL -->
     <xacro:macro name="rocker_material">
         <material name="dark_green">
@@ -19,10 +33,13 @@
 <!-- LINK -->
     <xacro:macro name="rocker_bearing" params="name parent x y z side">
         <link name="${name}">
+
             <visual>
-                <xacro:rocker_geometry/>
+                <xacro:if value="${side == 1}"> <xacro:rocker_visual_left/> </xacro:if>
+                <xacro:if value="${side == -1}"> <xacro:rocker_visual_right/> </xacro:if>
                 <xacro:rocker_material/>
             </visual>
+            
             <collision>
                 <xacro:rocker_geometry/>
             </collision>

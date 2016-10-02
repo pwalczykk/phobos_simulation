@@ -9,6 +9,14 @@
         </geometry>
     </xacro:macro>
 
+<!-- VISUAL -->
+    <xacro:macro name="wheel_visual">
+        <origin xyz="0.01 -0.05 -0.13" rpy="0 0 1.57075"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/kolo_stl.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+
 <!-- MATERIAL -->
     <xacro:macro name="wheel_material">
         <material name="black">
@@ -21,7 +29,7 @@
 
         <link name="wheel_${name}">
             <visual>
-                <xacro:wheel_geometry/>
+                <xacro:wheel_visual/>
                 <xacro:wheel_material/>
             </visual>
             <collision>

@@ -37,6 +37,13 @@
         </geometry>
     </xacro:macro> -->
 
+<!-- VISUAL -->
+    <xacro:macro name="main_body_visual">
+        <origin xyz="-0.402 0.43 -0.294" rpy="1.57075 0 0"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/R.Assembly.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
 
 <!-- MATERIAL -->
     <xacro:macro name="main_body_material">
@@ -51,7 +58,7 @@
     <!-- MAIN LINK -->
         <link name="${name}">
             <visual>
-                <xacro:main_body_geometry_1/>
+                <xacro:main_body_visual/>
                 <xacro:main_body_material/>
             </visual>
             <collision>
