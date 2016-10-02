@@ -21,7 +21,7 @@
     <xacro:property name="link_0_length2" value=".100"/>
     <xacro:property name="link_0_radius2" value=".070"/>
 
-    <xacro:property name="link_1_length" value=".500"/>
+    <xacro:property name="link_1_length" value=".452"/>
     <xacro:property name="link_1_width" value=".070"/>
     <xacro:property name="link_1_height" value=".070"/>
 
@@ -44,21 +44,21 @@
 
 <!-- LINKS -->
     <xacro:link_0 name="link_0" parent="main_body" x="${manipulator_pose_x}"            y="0"    z="${manipulator_pose_z}"/>
-    <xacro:link_1 name="link_1" parent="link_0"    x="0"              y="0"    z="${link_0_length1/2 + link_1_height/2}"/>
-    <xacro:link_2 name="link_2" parent="link_1"    x="${-link_1_length}"    y="0"    z="${link_1_height/2}"/>
-    <xacro:link_3 name="link_3" parent="link_2"    x="${link_2_length}"     y="0"    z="${link_2_height/2}"/>
-    <xacro:link_4 name="link_4" parent="link_3"    x="${link_3_length}"     y="0"    z="0"/>
+    <xacro:link_1 name="link_1" parent="link_0"    x="-0.003"              y="0"    z="${link_0_length1/2 + link_1_height/2 + 0.04}"/>
+    <xacro:link_2 name="link_2" parent="link_1"    x="${-link_1_length}"    y="0"    z="0"/>
+    <!-- <xacro:link_3 name="link_3" parent="link_2"    x="${link_2_length}"     y="0"    z="${link_2_height/2}"/> -->
+    <!-- <xacro:link_4 name="link_4" parent="link_3"    x="${link_3_length}"     y="0"    z="0"/> -->
 
 <!-- GRABBER -->
 
-    <xacro:finger name="finger_l" parent="link_4" x="${link_4_length + finger_length/2}" y="${link_4_width/2 - finger_width/2-.001}" z="${finger_height+.001}" side="-1"/>
-    <xacro:finger_b name="finger_lb" parent="finger_l" x="0" y="0" z="${-2*finger_height-.001}" side="-1"/>
+    <!-- <xacro:finger name="finger_l" parent="link_4" x="${link_4_length + finger_length/2}" y="${link_4_width/2 - finger_width/2-.001}" z="${finger_height+.001}" side="-1"/> -->
+    <!-- <xacro:finger_b name="finger_lb" parent="finger_l" x="0" y="0" z="${-2*finger_height-.001}" side="-1"/> -->
 
-    <xacro:finger name="finger_r" parent="link_4" x="${link_4_length + finger_length/2}" y="${-link_4_width/2 + finger_width/2}" z="0" side="1"/>
-    <xacro:finger_b name="finger_rc" parent="finger_r" x="0" y="0" z="${2*finger_height+.002}" side="1"/>
-    <xacro:finger_b name="finger_rb" parent="finger_r" x="0" y="0" z="${-2*finger_height-.002}" side="1"/>
+    <!-- <xacro:finger name="finger_r" parent="link_4" x="${link_4_length + finger_length/2}" y="${-link_4_width/2 + finger_width/2}" z="0" side="1"/> -->
+    <!-- <xacro:finger_b name="finger_rc" parent="finger_r" x="0" y="0" z="${2*finger_height+.002}" side="1"/> -->
+    <!-- <xacro:finger_b name="finger_rb" parent="finger_r" x="0" y="0" z="${-2*finger_height-.002}" side="1"/> -->
 
 <!-- SENSORS -->
-    <xacro:camera_link name="camera4" parent="link_4" x=".030" y="0" z=".100" pitch="0.4"/>
+    <!-- <xacro:camera_link name="camera4" parent="link_4" x=".030" y="0" z=".100" pitch="0.4"/> -->
 
 </robot>

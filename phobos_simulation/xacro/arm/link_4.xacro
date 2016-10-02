@@ -9,6 +9,15 @@
         </geometry>
     </xacro:macro>
 
+    <!-- VISUAL -->
+    <xacro:macro name="link_4_visual">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/chwytak.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+
+
 <!-- MATERIAL -->
     <xacro:macro name="link_4_material">
         <material name="link_4_color">
@@ -21,7 +30,7 @@
 
         <link name="${name}">
             <visual>
-                <xacro:link_4_geometry/>
+                <xacro:link_4_visual/>
                 <xacro:link_4_material/>
             </visual>
             <collision>

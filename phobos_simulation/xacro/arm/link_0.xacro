@@ -17,6 +17,15 @@
         </geometry>
     </xacro:macro>
 
+<!-- VISUAL -->
+    <xacro:macro name="link_0_visual">
+        <origin xyz="0.085 0.112 -0.01" rpy="1.57075 0 -1.448"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/stopien_2.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+
+
 <!-- MATERIAL -->
     <xacro:macro name="link_0_material">
         <material name="blue">
@@ -30,11 +39,7 @@
 <!-- LINK -->
         <link name="${name}">
             <visual>
-                <xacro:link_0_geometry1/>
-                <xacro:link_0_material/>
-            </visual>
-            <visual>
-                <xacro:link_0_geometry2/>
+                <xacro:link_0_visual/>
                 <xacro:link_0_material/>
             </visual>
 

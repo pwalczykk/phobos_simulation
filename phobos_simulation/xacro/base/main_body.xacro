@@ -38,10 +38,17 @@
     </xacro:macro> -->
 
 <!-- VISUAL -->
-    <xacro:macro name="main_body_visual">
+    <xacro:macro name="main_body_visual_1">
         <origin xyz="-0.402 0.43 -0.294" rpy="1.57075 0 0"/>
         <geometry>
             <mesh filename="package://phobos_meshes/rover_stl/R.Assembly.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </xacro:macro>
+
+    <xacro:macro name="main_body_visual_2">
+        <origin xyz="0.036 -0.165 -0.0735" rpy="1.57075 0 1.88"/>
+        <geometry>
+            <mesh filename="package://phobos_meshes/rover_stl/podstawa_manipulatora.STL" scale="0.001 0.001 0.001"/>
         </geometry>
     </xacro:macro>
 
@@ -58,7 +65,11 @@
     <!-- MAIN LINK -->
         <link name="${name}">
             <visual>
-                <xacro:main_body_visual/>
+                <xacro:main_body_visual_1/>
+                <xacro:main_body_material/>
+            </visual>
+            <visual>
+                <xacro:main_body_visual_2/>
                 <xacro:main_body_material/>
             </visual>
             <collision>
