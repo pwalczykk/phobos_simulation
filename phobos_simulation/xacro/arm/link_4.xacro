@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="link_4">
+<xacro:include filename="finger.xacro"/>
+
 
 <!-- GEOMETRY -->
     <xacro:macro name="link_4_geometry">
@@ -11,10 +13,7 @@
 
     <!-- VISUAL -->
     <xacro:macro name="link_4_visual">
-        <!-- <origin xyz="0.25 0.1 -0.587" rpy="1.8 -0.5 -1.45"/> -->
-        <!-- <origin xyz="0.25 0.1 -0.587" rpy="1.57075 -0.1 -1.45"/> -->
         <origin xyz="0.265 0.0835 -0.583" rpy="1.59 -0.18 -1.45"/>
-
         <geometry>
             <mesh filename="package://phobos_meshes/rover_stl/chwytak.STL" scale="0.001 0.001 0.001"/>
         </geometry>

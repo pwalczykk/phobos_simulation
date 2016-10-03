@@ -7,6 +7,7 @@
     <xacro:include filename="link_2.xacro"/>
     <xacro:include filename="link_3.xacro"/>
     <xacro:include filename="link_4.xacro"/>
+    <xacro:include filename="link_4_finger.xacro"/>
     <xacro:include filename="finger.xacro"/>
 
     <xacro:include filename="../sensors/camera.xacro"/>
@@ -33,12 +34,16 @@
     <xacro:property name="link_3_height" value=".040"/>
 
     <xacro:property name="link_4_length" value=".050"/>
-    <xacro:property name="link_4_width" value=".200"/>
-    <xacro:property name="link_4_height" value=".152"/>
+    <xacro:property name="link_4_width" value=".100"/>
+    <xacro:property name="link_4_height" value=".100"/>
 
-    <xacro:property name="finger_length" value=".250"/>
-    <xacro:property name="finger_width" value=".010"/>
+    <xacro:property name="finger_length" value=".350"/>
+    <xacro:property name="finger_width" value=".003"/>
     <xacro:property name="finger_height" value=".070"/>
+
+    <xacro:property name="link_4_finger_length" value=".350"/>
+    <xacro:property name="link_4_finger_width" value=".003"/>
+    <xacro:property name="link_4_finger_height" value=".070"/>
 
 
 <!-- LINKS -->
@@ -47,8 +52,9 @@
     <xacro:link_2 name="link_2" parent="link_1"    x="${-link_1_length}"    y="0"    z="0"/>
     <xacro:link_3 name="link_3" parent="link_2"    x="${link_2_length}"     y="0"    z="${link_2_height/2 + 0.025}"/>
     <xacro:link_4 name="link_4" parent="link_3"    x="${link_3_length}"     y="0.002"    z="0"/>
-    <!-- <xacro:finger name="finger" parent="link_4"    x=".073"     y="0.04"    z="0" side="-1"/> -->
+    <xacro:finger name="finger" parent="link_4"    x=".073"     y="0.04"    z="0" side="-1"/>
 
+    <xacro:link_4_finger name="link_4_finger" parent="link_4"    x=".073"     y="-0.04"    z="0" side="1"/>
 <!-- GRABBER -->
 
     <!-- <xacro:finger name="finger_l" parent="link_4" x="${link_4_length + finger_length/2}" y="${link_4_width/2 - finger_width/2-.001}" z="${finger_height+.001}" side="-1"/> -->

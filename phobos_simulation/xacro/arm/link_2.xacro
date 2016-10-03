@@ -3,7 +3,7 @@
 
 <!-- GEOMETRY -->
     <xacro:macro name="link_2_geometry_1">
-        <origin rpy="0 0 0" xyz="${link_2_length/2} 0 ${link_2_height/2}" />
+        <origin rpy="0 0 0" xyz="${link_2_length/2} 0 ${link_2_height/2 + 0.06}" />
         <geometry>
             <box size="${link_2_length} ${link_2_width} ${link_2_height}"/>
         </geometry>
