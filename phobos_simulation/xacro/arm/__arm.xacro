@@ -25,11 +25,11 @@
     <xacro:property name="link_1_width" value=".070"/>
     <xacro:property name="link_1_height" value=".070"/>
 
-    <xacro:property name="link_2_length" value=".250"/>
+    <xacro:property name="link_2_length" value=".308"/>
     <xacro:property name="link_2_width" value=".050"/>
     <xacro:property name="link_2_height" value=".050"/>
 
-    <xacro:property name="link_3_length" value=".250"/>
+    <xacro:property name="link_3_length" value=".090"/>
     <xacro:property name="link_3_width" value=".040"/>
     <xacro:property name="link_3_height" value=".040"/>
 
@@ -46,8 +46,8 @@
     <xacro:link_0 name="link_0" parent="main_body" x="${manipulator_pose_x}"            y="0"    z="${manipulator_pose_z}"/>
     <xacro:link_1 name="link_1" parent="link_0"    x="-0.003"              y="0"    z="${link_0_length1/2 + link_1_height/2 + 0.04}"/>
     <xacro:link_2 name="link_2" parent="link_1"    x="${-link_1_length}"    y="0"    z="0"/>
-    <!-- <xacro:link_3 name="link_3" parent="link_2"    x="${link_2_length}"     y="0"    z="${link_2_height/2}"/> -->
-    <!-- <xacro:link_4 name="link_4" parent="link_3"    x="${link_3_length}"     y="0"    z="0"/> -->
+    <xacro:link_3 name="link_3" parent="link_2"    x="${link_2_length}"     y="0"    z="${link_2_height/2 + 0.025}"/>
+    <xacro:link_4 name="link_4" parent="link_3"    x="${link_3_length}"     y="0"    z="0"/>
 
 <!-- GRABBER -->
 

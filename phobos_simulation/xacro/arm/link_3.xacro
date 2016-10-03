@@ -18,7 +18,7 @@
 
     <!-- VISUAL -->
     <xacro:macro name="link_3_visual">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0.112 -0.051 0.568" rpy="-1.52 0 1.45"/>
         <geometry>
             <mesh filename="package://phobos_meshes/rover_stl/stopien_5.STL" scale="0.001 0.001 0.001"/>
         </geometry>
